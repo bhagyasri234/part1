@@ -1,0 +1,2794 @@
+1. Check Sum of Odd Digits
+Write a program to read a number , calculate the sum of odd digits (values) present in the
+given number.
+Include a class UserMainCode with a static method checkSum which accepts a positive
+integer . The return type should be 1 if the sum is odd . In case the sum is even return -1 as
+output.
+Create a class Main which would get the input as a positive integer and call the static
+method checkSum present in the UserMainCode.
+Input and Output Format:
+Input consists of a positive integer n.
+Refer sample output for formatting specifications.
+Sample Input 1:
+56895
+Sample Output 1:
+Sum of odd digits is odd.
+Sample Input 2:
+84228
+Sample Output 2:
+Sum of odd digits is even.
+MAIN:
+import java.util.*;
+public class Main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ int n=s.nextInt();
+ int r=UserMainCode.checkSum(n);
+ if(r==1)
+ {
+ System.out.println("The sum of odd digits are odd");
+ }
+ else
+ {
+ System.out.println("The sum of odd digits are even");
+ }
+ s.close();
+ }
+}
+USERMAINCODE:
+public class UserMainCode {
+ public static int checkSum(int n)
+ {
+ int n1;
+ int sum=0;
+ int r;
+ while(n!=0)
+ {
+ n1=n%10;
+ if(n1%2!=0)
+ {
+ sum=sum+n1;
+ }
+n=n/10;
+ }
+ if(sum%2==0)
+ {
+ r=-1;
+ }
+ else
+ {
+ r=1;
+ }
+ return r;
+ }
+}
+2. Number Validation
+Write a program to read a string of 10 digit number , check whether the string contains a 10
+digit number in the format XXX-XXX-XXXX where 'X' is a digit.
+Include a class UserMainCode with a static method validateNumber which accepts a
+string
+as input .
+The return type of the output should be 1 if the string meets the above specified format . In
+case the number does not meet the specified format then return -1 as output.
+Create a class Main which would get the input as a String of numbers and call the static
+methodvalidateNumber present in the UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output is a string specifying the given string is valid or not .
+Refer sample output for formatting specifications.
+Sample Input 1:
+123-456-7895
+Sample Output 1:
+Valid number format
+Sample Input 2:
+-123-12344322
+Sample Output 2:
+Invalid number format
+MAIN:
+import java.util.*;
+public class Main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ String number=s.next();
+ int r=UserMainCode.validateNumber(number);
+ if(r==1)
+ {
+ System.out.println("Valid number format“);
+ }
+ else
+ {
+ System.out.println("Invalid number format");
+ }
+ s.close();
+ }
+}
+USERMAINCODE:
+import java.util.*;
+public class UserMainCode {
+ public static int validateNumber(String number)
+ {
+ int b;
+ if(number.matches("[0-9]{3}[-]{1}[0-9]{3}[-]{1}[0-9]{4}"))
+ {
+ b=1;
+ }
+ else
+ {
+ b=0;
+ }
+ return b;
+ }
+}
+3. Sum of Squares of Even Digits
+Write a program to read a number , calculate the sum of squares of even digits (values)
+present in the given number.
+Include a class UserMainCode with a static method sumOfSquaresOfEvenDigits
+which
+accepts a positive integer . The return type (integer) should be the sum of squares of the
+even digits.
+Create a class Main which would get the input as a positive integer and call the static
+method sumOfSquaresOfEvenDigits present in the UserMainCode.
+Input and Output Format:
+Input consists of a positive integer n.
+Output is a single integer .
+Refer sample output for formatting specifications.
+Sample Input 1:
+56895
+Sample Output 1:
+100
+MAIN:
+import java.util.*;
+public class Main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ int n=s.nextInt();
+ System.out.println(UserMainCode.sumOfSquaresOfEvenDigits(n));
+ s.close();
+ }
+}
+USERMAINCODE:
+public class UserMainCode {
+ public static int sumOfSquaresOfEvenDigits(int n)
+ {
+ int n1=0;
+ int sum=0;
+ while(n!=0)
+ {
+ n1=n%10;
+ if(n1%2==0)
+ {
+ sum+=n1*n1;
+ }
+n=n/10;
+ }
+ return sum;
+ }
+}
+4. Fetching Middle Characters from String
+Write a program to read a string of even length and to fetch two middle most characters
+from the input string and return it as string output.
+Include a class UserMainCode with a static method getMiddleChars which accepts a
+string
+of even length as input . The return type is a string which should be the middle characters of
+the string.
+Create a class Main which would get the input as a string and call the static
+method getMiddleCharspresent in the UserMainCode.
+Input and Output Format:
+Input consists of a string of even length.
+Output is a string .
+Refer sample output for formatting specifications.
+Sample Input 1:
+this
+Sample Output 1:
+hi
+Sample Input 1:
+Hell
+Sample Output 1:
+el
+MAIN:
+import java.util.*;
+public class Main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ String str=s.nextLine();
+ System.out.println(UserMainCode.getMiddleChars(str));
+ s.close();
+ }
+}
+USERMAINCODE:
+import java.util.*;
+public class UserMainCode {
+ public static String getMiddleChars(String str)
+ {
+ StringBuffer sb=new StringBuffer();
+ if(str.length()%2==0)
+ {
+ sb.append(str.substring((str.length()/2)-1,(str.length()/2)+1));
+ }
+ return sb.toString();
+ }
+}
+5. Check Characters in a String
+Write a program to read a string and to test whether first and last character are same. The
+string is said to be be valid if the 1st and last character are the same. Else the string is said to
+be invalid.
+Include a class UserMainCode with a static method checkCharacters which accepts a
+string
+as input .
+The return type of this method is an int. Output should be 1 if the first character and last
+character are same . If they are different then return -1 as output.
+Create a class Main which would get the input as a string and call the static
+method checkCharacterspresent in the UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output is a string saying characters are same or not .
+Refer sample output for formatting specifications.
+Sample Input 1:
+the picture was great
+Sample Output 1:
+Valid
+Sample Input 1:
+this
+Sample Output 1:
+Invalid
+MAIN:
+import java.util.*;
+public class main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ String input=s.nextLine();
+ int r=UserMainCode.checkCharacters(input);
+ if(r==1)
+ {
+ System.out.println("Valid");
+ }
+ else
+ {
+ System.out.println("Invalid");
+ }
+ s.close();
+ }
+}
+USERMAINCODE:
+import java.util.*;
+public class UserMainCode {
+ public static int checkCharacters(String input)
+ {
+ int r;
+ StringTokenizer t = new StringTokenizer(input," ");
+ String s = t.nextToken();
+ String s1 =s ;
+ while(t.hasMoreTokens())
+ {
+ s1 = t.nextToken();
+ }
+ if(s.charAt(0) == s1.charAt(s1.length()-1))
+ r=1;
+ else
+ r=0;
+ return r;
+ }
+}
+6. Forming New Word from a String
+Write a program to read a string and a positive integer n as input and construct a string with
+first n and last n characters in the given string.
+Include a class UserMainCode with a static method formNewWord which accepts a
+string
+and positive integer .
+The return type of the output should be a string (value) of first n character and last n
+character.
+Create a class Main which would get the input as a string and integer n and call the static
+methodformNewWord present in the UserMainCode.
+Input and Output Format:
+Input consists of a string of even length.
+Output is a string .
+Note: The given string length must be >=2n.
+Refer sample output for formatting specifications.
+Sample Input 1:
+California
+3
+Sample Output 1:
+Calnia
+Sample Input 2:
+this
+1
+Sample Output 2:
+Ts
+MAIN:
+import java.util.*;
+public class Main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ String s1=s.nextLine();
+ int n1=s.nextInt();
+ System.out.println(UserMainCode.formNewWord(s1,n1));
+ s.close();
+ }
+}
+USERMAINCODE:
+import java.util.*;
+public class UserMainCode {
+ public static String formNewWord(String s1,int n)
+ {
+ String s = new String();
+ if(s1.length()>n)
+ {
+ s = s1.substring(0,n) + s1.substring(s1.length()-n, s1.length());
+ return s;
+ }
+ else
+ return null;
+ }
+}
+7. Reversing a Number
+Write a program to read a positive number as input and to get the reverse of the given
+number and return it as output.
+Include a class UserMainCode with a static method reverseNumber which accepts a
+positive
+integer .
+The return type is an integer value which is the reverse of the given number.
+Create a Main class which gets the input as a integer and call the static
+method reverseNumber present in the UserMainCode
+Input and Output Format:
+Input consists of a positive integer.
+Output is an integer .
+Refer sample output for formatting specifications.
+Sample Input 1:
+543
+Sample Output 1:
+345
+Sample Input 1:
+1111
+Sample Output 1:
+1111
+MAIN:
+import java.util.*;
+public class Main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ int n=s.nextInt();
+ System.out.println(UserMainCode.reverseNumber(n));
+ s.close();
+ }
+}
+USERMAINCODE:
+public class UserMainCode {
+ public static int reverseNumber(int n)
+ {
+ int a,r=0;
+ while(n!=0)
+ {
+ a=n%10;
+ r=r*10+a;
+ n=n/10;
+ }
+ return r;
+ }
+}
+8. Array List Sorting and Merging
+Write a code to read two int array lists of size 5 each as input and to merge the two
+arrayLists, sort the merged arraylist in ascending order and fetch the elements at 2nd, 6th
+and 8th index into a new arrayList and return the final ArrayList.
+Include a class UserMainCode with a static method sortMergedArrayList which
+accepts 2
+ArrayLists.
+The return type is an ArrayList with elements from 2,6 and 8th index position .Array index
+starts from position 0.
+Create a Main class which gets two array list of size 5 as input and call the static
+methodsortMergedArrayList present in the UserMainCode.
+Input and Output Format:
+Input consists of two array lists of size 5.
+Output is an array list .
+Note - The first element is at index 0.
+Refer sample output for formatting specifications.
+Sample Input 1:
+3
+1
+17
+11
+19
+5
+2
+7
+6
+20
+Sample Output 1:
+3
+11
+19
+Sample Input 2:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Sample Output 2:
+3
+7
+9
+Main:
+import java.util.*;
+public class Main {
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ ArrayList<Integer> list1=new ArrayList<Integer>();
+ ArrayList<Integer> list2=new ArrayList<Integer>();
+ ArrayList<Integer> newlist=new ArrayList<Integer>();
+ for (int i = 0; i < 5; i++)
+ {
+ list1.add(s.nextInt());
+ }
+ for (int i = 0; i < 5; i++)
+ {
+ list2.add(s.nextInt());
+ }
+ newlist=UserMainCode.sortMergedArraylist(list1,list2);
+ for (int i = 0; i < 3; i++)
+ {
+ System.out.println(newlist.get(i));
+ }
+ s.close();
+ }
+}
+UERMAINCODE:
+import java.util.*;
+public class UserMainCode {
+ public static ArrayList<Integer> sortMergedArraylist(ArrayList<Integer>
+list1,ArrayList<Integer> list2)
+ {
+ list1.addAll(list2);
+ Collections.sort(list1);
+ ArrayList<Integer> ans=new ArrayList<Integer>();
+ ans.add(list1.get(2));
+ ans.add(list1.get(6));
+ ans.add(list1.get(8));
+ return ans;
+ }
+}
+9. Validating Date Format
+Obtain a date string in the format dd/mm/yyyy. Write code to validate the given date
+against the given format.
+Include a class UserMainCode with a static method validateDate which accepts a string .
+The return type of the validateDate method is 1 if the given date format matches the
+specified format , If the validation fails return the output as -1.
+Create a Main class which gets date string as an input and call the static
+method validateDate present in the UserMainCode.
+Input and Output Format:
+Input is a string .
+Refer sample output for formatting specifications
+Sample Input 1:
+12/06/1987
+Sample Output 1:
+Valid date format
+Sample Input 2:
+03/1/1987
+Sample Output 2:
+Invalid date format
+Main:
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+String s1=sc.nextLine();
+int b=UserMainCode.ValidateDate(s1);
+if(b==1){
+ System.out.println("Valid date format");
+}
+else{
+ System.out.println("Invalid date format");
+}
+sc.close();
+}}
+UserMainCode:
+import java.util.*;
+import java.text.*;
+public class UserMainCode{
+public static int ValidateDate(String s1) {
+if(s1.matches("[0-9]{2}[/]{1}[0-9]{2}[/]{1}[0-9]{4}"))
+{
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+sdf.setLenient(false);
+try {
+Date d1=sdf.parse(s1);
+return 1;
+} catch (ParseException e) {
+return -1;
+}
+}
+else{
+return -1;}}}
+10. Validate Time
+Obtain a time string as input in the following format 'hh:mm am' or 'hh:mm pm'. Write code
+to validate it using the following rules:
+- It should be a valid time in 12 hrs format
+- It should have case insensitive AM or PM
+Include a class UserMainCode with a static method validateTime which accepts a string.
+If the given time is as per the given rules then return 1 else return -1.If the value returned is
+1 then print as valid time else print as Invalid time.
+Create a Main class which gets time(string value) as an input and call the static
+method validateTimepresent in the UserMainCode.
+Input and Output Format:
+Input is a string .
+Output is a string .
+Sample Input 1:
+09:59 pm
+Sample Output 1:
+Valid time
+Sample Input 2:
+10:70 AM
+Sample Output 2:
+Invalid time
+Main:
+import java.util.*;
+public class Main{
+public static void main(String []args){
+Scanner sc=new Scanner(System.in);
+String str=sc.nextLine();
+int b=UserMainCode.ValidateTime(str);
+if(b==1){
+ System.out.println("Valid time");
+}
+else{
+ System.out.println("Invalid time");
+}
+sc.close();
+}}
+UserMainCode:
+import java.text.*;
+import java.util.*;
+public class UserMainCode{
+public static int ValidateTime(String str){
+StringTokenizer st=new StringTokenizer(str,":");
+if(st.countTokens()==3)
+{
+SimpleDateFormat sdf1 = new SimpleDateFormat("h:mm:ss a");
+sdf1.setLenient(false);
+try
+{
+Date d2=sdf1.parse(str);
+return 1;
+}
+catch(Exception e)
+{
+ return -1;
+}}
+else
+{
+SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+sdf.setLenient(false);
+try
+{
+Date d1=sdf.parse(str);
+return 1;
+}
+catch(Exception e){
+ return -1;
+}}}}
+11. String Encryption
+Given an input as string and write code to encrypt the given string using following rules and
+return the encrypted string:
+1. Replace the characters at odd positions by next character in alphabet.
+2. Leave the characters at even positions unchanged.
+Note:
+- If an odd position charater is 'z' replace it by 'a'.
+- Assume the first character in the string is at position 1.
+Include a class UserMainCode with a static method encrypt which accepts a string.
+The return type of the output is the encrypted string.
+Create a Main class which gets string as an input and call the static method encrypt
+present
+in theUserMainCode.
+Input and Output Format:
+Input is a string .
+Output is a string.
+Sample Input 1:
+curiosity
+Sample Output 1:
+dusipsjtz
+Sample Input 2:
+zzzz
+Sample Output 2:
+Azaz
+Main:
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+ Scanner s=new Scanner(System.in);
+ String s1=s.next();
+ System.out.println(UserMainCode.encrypt(s1));
+ s.close();
+}
+}
+UserMainCode:
+public class UserMainCode{
+public static String encrypt(String s1) {
+StringBuffer sb=new StringBuffer();
+for(int i=0;i<s1.length();i++){
+char c=s1.charAt(i);
+if(i%2==0){
+if(c==122)
+if((c==122)&&(i==0)){
+c='A';}
+else
+c=(char) (c-25);
+else{
+c=(char) (c+1);}
+sb.append(c);}
+else
+sb.append(c);}
+return sb.toString();
+}}
+12. Password Validation
+Given a method with a password in string format as input. Write code to validate the
+password using following rules:
+- Must contain at least one digit
+- Must contain at least one of the following special characters @, #, $
+# Length should be between 6 to 20 characters.
+Include a class UserMainCode with a static method validatePassword which accepts a
+password string as input.
+If the password is as per the given rules return 1 else return -1.If the return value is 1 then
+print valid password else print as invalid password.
+Create a Main class which gets string as an input and call the static
+method validatePassword present in the UserMainCode.
+Input and Output Format:
+Input is a string .
+Output is a string .
+Sample Input 1:
+%Dhoom%
+Sample Output 1:
+Invalid password
+Sample Input 2:
+#@6Don
+Sample Output 2:
+Valid password
+Main:
+import java.util.*;
+public class Main {
+public static void main(String[] args){
+ Scanner s=new Scanner(System.in);
+ String password=s.next();
+ int b=UserMainCode.ValidatePassword(password);
+ if(b==1){
+ System.out.println("Valid Password");
+ }
+ else{
+ System.out.println("Invalid Password");
+ }
+ s.close();
+}}
+UserMainCode:
+public class UserMainCode{
+public static int ValidatePassword(String password){
+if(password.matches(".*[0-9]{1,}.*") && password.matches(".*[@#$]{1,}.*")
+&& password.length()>=6 && password.length()<=20)
+{
+return 1;
+}
+else
+{
+return -1;
+}}}
+13. Removing vowels from String
+Given a method with string input. Write code to remove vowels from even position in the
+string.
+Include a class UserMainCode with a static method removeEvenVowels which accepts
+a
+string as input.
+The return type of the output is string after removing all the vowels.
+Create a Main class which gets string as an input and call the static
+method removeEvenVowels present in the UserMainCode.
+Input and Output Format:
+Input is a string .
+Output is a string .
+Assume the first character is at position 1 in the given string.
+Sample Input 1:
+commitment
+Sample Output 1:
+cmmitmnt
+Sample Input 2:
+capacity
+Sample Output 2:
+Cpcty
+Main:
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.nextLine();
+System.out.println(UserMainCode.removeEvenVowels(s1));
+s.close();
+}}
+UserMainCode:
+public class UserMainCode{
+public static String removeEvenVowels(String s1) {
+StringBuffer sb1=new StringBuffer();
+for(int i=0;i<s1.length();i++)
+if((i%2)==0)
+sb1.append(s1.charAt(i));
+else if((i%2)!=0)
+if(s1.charAt(i)!='a' && s1.charAt(i)!='e' &&
+s1.charAt(i)!='i' && s1.charAt(i)!='o' && s1.charAt(i)!='u')
+if(s1.charAt(i)!='A' && s1.charAt(i)!='E' &&
+s1.charAt(i)!='I' && s1.charAt(i)!='O' && s1.charAt(i)!='U')
+sb1.append(s1.charAt(i));
+return sb1.toString();
+}}
+14. Sum of Powers of elements in an array
+Given a method with an int array. Write code to find the power of each individual element
+accoding to its position index, add them up and return as output.
+Include a class UserMainCode with a static method getSumOfPower which accepts an
+integer array as input.
+The return type of the output is an integer which is the sum powers of each element in the
+array.
+Create a Main class which gets integer array as an input and call the static
+method getSumOfPowerpresent in the UserMainCode.
+Input and Output Format:
+Input is an integer array.First element corresponds to the number(n) of elements in an
+array.The next inputs corresponds to each element in an array.
+Output is an integer .
+Sample Input 1:
+4
+3
+6
+2
+1
+Sample Output 1:
+12
+Sample Input 2:
+4
+5
+3
+7
+2
+Sample Output 2:
+61
+Main:
+import java.util.Scanner;
+public class Main{
+public static void main(String args[]){
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+int a[]=new int[n];
+for(int i=0;i<n;i++)
+{
+a[i]=sc.nextInt();
+}
+System.out.println(UserMainCode.getSumOfPower(n,a));
+sc.close();
+}}
+UserMainCode:
+public class UserMainCode{
+public static int getSumOfPower(int n,int[]a)
+{{
+int sum=0;
+for(int i=0;i<n;i++)
+sum=(int)(sum+Math.pow(a[i], i));
+return sum;
+}}}
+15.Difference between largest and smallest elements in an array
+Given a method taking an int array having size more than or equal to 1 as input. Write code
+to return the difference between the largest and smallest elements in the array. If there is
+only one element in the array return the same element as output.
+Include a class UserMainCode with a static method getBigDiff which accepts a integer
+array
+as input.
+The return type of the output is an integer which is the difference between the largest and
+smallest elements in the array.
+Create a Main class which gets integer array as an input and call the static
+method getBigDiff present in the UserMainCode.
+Input and Output Format:
+Input is an integer array.First element in the input represents the number of elements in an
+array.
+Size of the array must be >=1
+Output is an integer which is the difference between the largest and smallest element in an
+array.
+Sample Input 1:
+4
+3
+6
+2
+1
+Sample Output 1:
+5
+Sample Input 2:
+4
+5
+3
+7
+2
+Sample Output 2:
+5
+Main:
+import java.util.*;
+public class Main {
+ public static void main(String args[]){
+ Scanner sc=new Scanner(System.in);
+ int n=sc.nextInt();
+ int a[]=new int[n];
+ for(int i=0;i<n;i++)
+ {
+ a[i]=sc.nextInt();
+ }
+ System.out.println(UserMainCode.getBigDiff(a,n));
+ sc.close();
+ }}
+UserMainCode:
+import java.util.*;
+public class UserMainCode{
+public static int getBigDiff(int [] a,int n)
+{
+ Arrays.sort(a);
+ int n1=a[a.length-1]-a[0];
+ return n1;
+}}
+16.Find the element position in a reversed string array
+Given a method with an array of strings and one string variable as input. Write code to sort
+the given array in reverse alphabetical order and return the postion of the given string in the
+array.
+Include a class UserMainCode with a static method getElementPosition which accepts
+an
+array of strings and a string variable as input.
+The return type of the output is an integer which is the position of given string value from
+the array.
+Create a Main class which gets string array and a string variable as an input and call the
+static methodgetElementPosition present in the UserMainCode.
+Input and Output Format:
+Input is an string array. First element in the input represents the size the array
+Assume the position of first element is 1.
+Output is an integer which is the position of the string variable
+Sample Input 1:
+4
+red
+green
+blue
+ivory
+ivory
+Sample Output 1:
+2
+Sample Input 2:
+3
+grape
+mango
+apple
+apple
+Sample Output 2:
+3
+Main:
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+int fr=sc.nextInt();
+String a[]=new String[fr];
+for(int i=0;i<fr;i++)
+{
+a[i]=sc.next();
+}
+String ba=sc.next();
+UserMainCode.getElementPosition(a,ba);
+sc.close();
+}}
+UserMainCode:
+import java.util.*;
+public class UserMainCode{
+public static void getElementPosition(String[] a, String b) {
+ArrayList<String>al=new ArrayList<String>();
+for(int i=0;i<a.length;i++)
+{
+al.add(a[i]);
+}
+Collections.sort(al);
+Collections.reverse(al);
+for(int i=0;i<al.size();i++)
+{
+if(b.equals(al.get(i)))
+{
+System.out.println(i+1);
+}}}}
+17.generate the series
+Given a method taking an odd positive Integer number as input. Write code to evaluate the
+following series:
+1+3-5+7-9…+/-n.
+Include a class UserMainCode with a static method addSeries which accepts a positive
+integer .
+The return type of the output should be an integer .
+Create a class Main which would get the input as a positive integer and call the static
+method addSeriespresent in the UserMainCode.
+Input and Output Format:
+Input consists of a positive integer n.
+Output is a single integer .
+Refer sample output for formatting specifications.
+Sample Input 1:
+9
+Sample Output 1:
+-3
+Sample Input 2:
+11
+Sample Output 2:
+8
+Main
+ import java.util.*;
+ public class Main {
+ public static void main(String[] args) {
+ Scanner s=new Scanner(System.in);
+ int n=s.nextInt();
+ System.out.println(UserMainCode.addSeries(n));
+ s.close();
+ }
+}
+UserMainCode
+import java.util.ArrayList;
+import java.util.List;
+public class UserMainCode {
+ public static int addSeries(int n){
+ List<Integer> l1=new ArrayList<Integer>();
+ for(int i=1;i<=n;i++)
+ if(i%2!=0)
+ l1.add(i);
+ int n1=l1.get(0);
+ for(int i=1;i<l1.size();i++)
+ if(i%2!=0)
+ n1=n1+l1.get(i);
+ else
+ n1=n1-l1.get(i);
+ return n1;
+ }
+}
+18.Calculate Electricity Bill
+Given a method calculateElectricityBill() with three inputs. Write code to calculate the
+current bill.
+Include a class UserMainCode with a static method calculateElectricityBill which
+accepts 3
+inputs .The return type of the output should be an integer .
+Create a class Main which would get the inputs and call the static
+method calculateElectricityBill present in the UserMainCode.
+Input and Output Format:
+Input consist of 3 integers.
+First input is previous reading, second input is current reading and last input is per unit
+charge.
+Reading Format - XXXXXAAAAA where XXXXX is consumer number and AAAAA is
+meter
+reading.
+Output is a single integer corresponding to the current bill.
+Refer sample output for formatting specifications.
+Sample Input 1:
+ABC2012345
+ABC2012660
+4
+Sample Output 1:
+1260
+Sample Input 2:
+ABCDE11111
+ABCDE11222
+3
+Sample Output 2:
+333
+Main
+import java.util.Scanner;
+ public class Main {
+ public static void main(String[] args) {
+ Scanner s=new Scanner(System.in);
+ String input1=s.next();
+ String input2=s.next();
+ int input3=s.nextInt();
+ System.out.println(UserMainCode.calculateElectricityBill(input1,input2,inpu
+t3));
+ s.close();
+ }
+}
+UserMainCode
+public class UserMainCode {
+ public static int calculateElectricityBill(String input1, String input2,
+int input3)
+ {
+ int n1=Integer.parseInt(input1.substring(5, input1.length()));
+ int n2=Integer.parseInt(input2.substring(5, input2.length()));
+ int n=Math.abs((n2-n1)*input3);
+ return n;
+ }
+ }
+19.Sum of Digits in a String
+Write code to get the sum of all the digits present in the given string.
+Include a class UserMainCode with a static method sumOfDigits which accepts string
+input.
+Return the sum as output. If there is no digit in the given string return -1 as output.
+Create a class Main which would get the input and call the static
+method sumOfDigits present in the UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output is a single integer which is the sum of digits in a given string.
+Refer sample output for formatting specifications.
+Sample Input 1:
+good23bad4
+Sample Output 1:
+9
+Sample Input 2:
+good
+Sample Output 2:
+-1
+Main
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.next();
+UserMainCode.sumOfDigits(s1);
+s.close();
+}
+}
+UserMainCode
+public class UserMainCode {
+ public static void sumOfDigits(String s1) {
+ int sum=0;
+ for(int i=0;i<s1.length();i++)
+ {
+ char a=s1.charAt(i);
+ if(Character.isDigit(a))
+ {
+ int b=Integer.parseInt(String.valueOf(a));
+ sum=sum+b;
+ }
+ }
+ if(sum==0)
+ {
+ System.out.println(-1);
+ }
+ else
+ System.out.println(sum);
+ }
+}
+20.String Concatenation
+Write code to get two strings as input and If strings are of same length simply append them
+together and return the final string. If given strings are of different length, remove starting
+characters from the longer string so that both strings are of same length then append them
+together and return the final string.
+Include a class UserMainCode with a static method concatstring which accepts two
+string
+input.
+The return type of the output is a string which is the concatenated string.
+Create a class Main which would get the input and call the static
+method concatstring present in the UserMainCode.
+Input and Output Format:
+Input consists of two strings.
+Output is a string.
+Refer sample output for formatting specifications.
+Sample Input 1:
+Hello
+hi
+Sample Output 1:
+lohi
+Sample Input 2:
+Hello
+Delhi
+Sample Output 2:
+HelloDelhi
+Main
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.next();
+String s2=s.next();
+UserMainCode.concatstring(s1,s2);
+s.close();
+}
+} UserMainCode
+public class UserMainCode {
+ public static void concatstring(String s1, String s2) {
+ StringBuffer sb=new StringBuffer();
+ int l1=s1.length();
+ int l2=s2.length();
+ if(l1==l2)
+ {
+ sb.append(s1).append(s2);
+ }
+ else if(l1>l2)
+ {
+ sb.append(s1.substring(s1.length()-
+s2.length(),s1.length())).append(s2);
+ }
+ else if(l1<l2)
+ {
+ sb.append(s1).append(s2.substring(s2.length()-
+s1.length(),s2.length()));
+ }
+ System.out.println(sb);
+ }
+}
+21. Color Code
+Write a program to read a string and validate whether the given string is a valid color code
+based on the following rules:
+- Must start with "#" symbol
+- Must contain six characters after #
+- It may contain alphabets from A-F or digits from 0-9
+Include a class UserMainCode with a static method validateColorCode which accepts a
+string. The return type (integer) should return 1 if the color is as per the rules else return -1.
+Create a Class Main which would be used to accept a String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of a string (Valid or Invalid).
+Refer sample output for formatting specifications.
+Sample Input 1:
+#FF9922
+Sample Output 1:
+Valid
+Sample Input 2:
+#FF9(22
+Sample Output 2:
+Invalid
+Main
+import java.util.*;
+public class Main {
+ public static void main(String[] args) {
+ Scanner s=new Scanner(System.in);
+ String s1=s.next();
+ int b=UserMainCode.validateColorCode(s1);
+ if(b==1)
+ System.out.println("Valid");
+ else
+ System.out.println("Invalid");
+ s.close();
+ }
+ }
+UserMainCode
+public class UserMainCode {
+ public static int validateColorCode(String s1) {
+ int b=0,b1=0;
+ String s2=s1.substring(1,s1.length());
+ if(s1.length()==7)
+ if(s1.charAt(0)=='#')
+ b1=1;
+ if(b1==1){
+ /*for(int i=0;i<s2.length();i++){
+ char c=s2.charAt(i);
+ if(c!='#')
+ {*/
+ if(s2.matches("[A-F0-9]{1,}"))
+
+ b=1;
+ else
+ b=-1;
+ //break;
+ }
+ return b;
+ }
+ }
+22.Three Digits
+Write a program to read a string and check if the given string is in the format "CTS-XXX"
+where XXX is a three digit number.
+Include a class UserMainCode with a static method validatestrings which accepts a
+string.
+The return type (integer) should return 1 if the string format is correct else return -1.
+Create a Class Main which would be used to accept a String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of a string (Valid or Invalid).
+Refer sample output for formatting specifications.
+Sample Input 1:
+CTS-215
+Sample Output 1:
+Valid
+Sample Input 2:
+CTS-2L5
+Sample Output 2:
+Invalid
+Main
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.next();
+int b=UserMainCode.validatestrings(s1);
+if(b==1){
+ System.out.println("Valid");}
+ else
+ System.out.println("Invalid");
+ s.close();
+}
+}
+UserMainCode
+public class UserMainCode {
+ public static int validatestrings(String s1) {
+ int res=0;
+ if(s1.matches("(CTS)[-]{1}[0-9]{3}"))
+ {
+ res=1;
+ }
+ else
+ res=-1;
+ return res;
+ }
+ }
+23.Removing Keys from HashMap
+Given a method with a HashMap<Integer,string> as input. Write code to remove all the
+entries having keys multiple of 4 and return the size of the final hashmap.
+Include a class UserMainCode with a static method sizeOfResultandHashMap which
+accepts hashmap as input.
+The return type of the output is an integer which is the size of the resultant hashmap.
+Create a class Main which would get the input and call the static
+method sizeOfResultandHashMap present in the UserMainCode.
+Input and Output Format:
+First input corresponds to the size of the hashmap.
+Input consists of a hashmap<integer,string>.
+Output is an integer which is the size of the hashmap.
+Refer sample output for formatting specifications.
+Sample Input 1:
+3
+2
+hi
+4
+hello
+12
+hello world
+Sample Output 1:
+1
+Sample Input 2:
+3
+2
+hi
+4
+sdfsdf
+3
+asdf
+Sample Output 2:
+2
+Main
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+int s=sc.nextInt();
+HashMap<Integer, String>hm=new HashMap<Integer, String>();
+for(int i=0;i<s;i++){
+ hm.put((sc.nextInt()),(sc.next()));
+}
+System.out.println(UserMainCode.sizeOfResultandHashMap(hm));
+sc.close();
+} }
+UserMainCode
+import java.util.HashMap;
+import java.util.Iterator;
+public class UserMainCode {
+ public static int sizeOfResultandHashMap(HashMap<Integer, String> hm) {
+ int count=0;
+
+ Iterator<Integer>itr=hm.keySet().iterator();
+ while(itr.hasNext())
+ {
+ int n=itr.next();
+ if(n%4!=0)
+ {
+ count++;
+ }
+ }
+ return count;
+ }
+ }
+24.Largest Element
+Write a program to read an int array of odd length, compare the first, middle and the last
+elements in the array and return the largest. If there is only one element in the array return
+the same element.
+Include a class UserMainCode with a static method checkLargestAmongCorner
+which
+accepts an int arrayThe return type (integer) should return the largest element among the
+first, middle and the last elements.
+Create a Class Main which would be used to accept Input array and call the static method
+present in UserMainCode.
+Assume maximum length of array is 20.
+Input and Output Format:
+Input consists of n+1 integers. The first integer corresponds to n, the number of elements in
+the array. The next 'n' integers correspond to the elements in the array.
+Output consists of a single Integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+5
+2
+3
+8
+4
+5
+Sample Output 1:
+8
+Main
+import java.util.*;
+public class Main {
+ public static void main(String[] args) {
+ Scanner s=new Scanner(System.in);
+ int n=s.nextInt();
+ int a[]=new int[n];
+ for(int i=0;i<n;i++){
+ a[i]=s.nextInt();
+ }
+ System.out.println(UserMainCode.checkLargestAmongCorner(a));
+ s.close();
+ }
+
+}
+UserMainCode
+public class UserMainCode {
+ public static int checkLargestAmongCorner(int []a)
+ {
+ int max=0;
+ int x,y,z;
+ x=a[0];
+ y=a[a.length/2];
+ z=a[a.length-1];
+ if(x>y && x>z)
+ max=x;
+ else if(y>x && y>z)
+ max=y;
+ else if(z>x && z>y)
+ max=z;
+ return max;
+ }
+}
+25. nCr
+Write a program to calculate the ways in which r elements can be selected from n
+population, using nCr formula nCr=n!/r!(n-r)! where first input being n and second input
+being r.
+Note1 : n! factorial can be achieved using given formula n!=nx(n-1)x(n-2)x..3x2x1.
+Note2 : 0! = 1.
+Example 5!=5x4x3x2x1=120
+Include a class UserMainCode with a static method calculateNcr which accepts two
+integers. The return type (integer) should return the value of nCr.
+Create a Class Main which would be used to accept Input elements and call the static
+method present in UserMainCode.
+Input and Output Format:
+Input consists of 2 integers. The first integer corresponds to n, the second integer
+corresponds to r.
+Output consists of a single Integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+4
+3
+Sample Output 1:
+4
+Main
+import java.util.*;
+public class Main {
+ public static void main(String[] args) {
+ Scanner s=new Scanner(System.in);
+ int n=s.nextInt();
+ int r=s.nextInt();
+ System.out.println(UserMainCode.calculateNcr(n,r));
+ }
+}
+UserMainCode
+public class UserMainCode {
+ public static int calculateNcr(int n, int r) {
+ int fact=1,fact1=1,fact2=1;
+ for(int i=1;i<=n;i++)
+ {
+ fact=fact*i;
+ }
+ //System.out.println(fact);
+ for(int i=1;i<=r;i++)
+ {
+ fact1=fact1*i;
+ }
+ //System.out.println(fact1);
+ for(int i=1;i<=(n-r);i++)
+ {
+ fact2=fact2*i;
+ }
+ //System.out.println(fact2);
+ int res=fact/(fact1*fact2);
+ return res;
+
+}
+}
+26.Sum of Common Elements
+Write a program to find out sum of common elements in given two arrays. If no common
+elements are found print - “No common elements”.
+Include a class UserMainCode with a static method getSumOfIntersection which
+accepts
+two integer arrays and their sizes. The return type (integer) should return the sum of
+common elements.
+Create a Class Main which would be used to accept 2 Input arrays and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of 2+m+n integers. The first integer corresponds to m (Size of the 1st array),
+the second integer corresponds to n (Size of the 2nd array), followed by m+n integers
+corresponding to the array elements.
+Output consists of a single Integer corresponds to the sum of common elements or a string
+“No common elements”.
+Refer sample output for formatting specifications.
+Assume the common element appears only once in each array.
+Sample Input 1:
+4
+3
+2
+3
+5
+1
+1
+3
+9
+Sample Output 1:
+4
+Sample Input 2:
+4
+3
+2
+3
+5
+1
+12
+31
+9
+Sample Output 2:
+No common elements
+Main
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+int m=sc.nextInt();
+int[] a=new int[n];
+int[] b=new int[m];
+for(int i=0;i<n;i++){
+a[i]=sc.nextInt();}
+for(int i=0;i<m;i++){
+b[i]=sc.nextInt();}
+int u=UserMainCode.getSumOfIntersection (a,b,n,m);
+if(u==-1)
+ System.out.println("No common elements");
+ else
+ System.out.println(u);
+sc.close();
+}}
+UserMainCode
+public class UserMainCode {
+ public static int getSumOfIntersection(int a[],int b[],int n,int m)
+ {
+ int sum=0;
+ for(int i=0;i<a.length;i++)
+ {
+ for(int j=0;j<b.length;j++)
+ {if(a[i]==b[j])
+ sum=sum+a[i];
+ }}
+ if(sum==0)
+ return -1;
+ else
+ return sum;
+ }
+}
+27.Validating Input Password
+102.Write a code get a password as string input and validate using the rules specified below.
+Apply following validations:
+1. Minimum length should be 8 characters
+2. Must contain any one of these three special characters @ or _ or #
+3. May contain numbers or alphabets.
+4. Should not start with special character or number
+5. Should not end with special character
+Include a class UserMainCode with a static method validatePassword which accepts
+password string as input and returns an integer. The method returns 1 if the password is
+valid. Else it returns -1.
+Create a class Main which would get the input and call the static
+method validatePassword present in the UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output is a string Valid or Invalid.
+Refer sample output for formatting specifications.
+Sample Input 1:
+ashok_23
+Sample Output 1:
+Valid
+Sample Input 2:
+1980_200
+Sample Output 2:
+Invalid
+Main
+import java.util.*;
+public class Main{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+String a=sc.next();
+int e=UserMainCode.validatePassword(a);
+if(e==1){
+System.out.println("Valid");
+}
+else
+{
+ System.out.println("Invalid");
+}
+sc.close();
+}}
+UserMainCode
+public class UserMainCode {
+ public static int validatePassword(String a){
+ int d=0;
+ if(a.length()>=8){
+ if(a.contains("#") || a.contains("@") || a.contains("_"))
+ {
+ char c= a.charAt(0);
+ //System.out.println(c);
+ if(Character.isAlphabetic(c))
+ {
+ char dd=a.charAt(a.length()-1);
+ //System.out.println(dd);
+ if((Character.isAlphabetic(dd))||(Character.isDigit(dd)))
+ {
+ if(a.matches(".*[0-9]{1,}.*")||a.matches(".*[a-zA-Z]{1,}.*")){
+ d=1;
+ }
+ }
+ }
+ }
+ }
+ else
+ d=-1;
+ return d;
+}}
+28.iD Validation
+Write a program to get two string inputs and validate the ID as per the specified format.
+Include a class UserMainCode with a static method validateIDLocations which accepts
+two
+strings as input.
+The return type of the output is a string Valid Id or Invalid Id.
+Create a class Main which would get the input and call the static
+method validateIDLocations present in the UserMainCode.
+Input and Output Format:
+Input consists of two strings.
+First string is ID and second string is location. ID is in the format CTS-LLL-XXXX where
+LLL is
+the first three letters of given location and XXXX is a four digit number.
+Output is a string Valid id or Invalid id.
+Refer sample output for formatting specifications.
+Sample Input 1:
+CTS-hyd-1234
+hyderabad
+Sample Output 1:
+Valid id
+Sample Input 2:
+CTS-hyd-123
+hyderabad
+Sample Output 2:
+Invalid id
+Main
+import java.util.*;
+public class Main3 {
+public static void main(String[] args) {
+ Scanner sc=new Scanner(System.in);
+String s1=sc.next();
+String s2=sc.next();
+boolean b=UserMainCode3.validateIDLocations(s1,s2);
+if(b==true)
+System.out.println("Valid id");
+else
+System.out.println("Invalid id");
+sc.close();
+}
+}
+UserMainCode
+import java.util.StringTokenizer;
+public class UserMainCode3 {
+ public static boolean validateIDLocations(String s1, String s2) {
+ String s3=s2.substring(0, 3);
+ boolean b=false;
+ StringTokenizer t=new StringTokenizer(s1,"-");
+ String s4=t.nextToken();
+ String s5=t.nextToken();
+ String s6=t.nextToken();
+ if(s4.equals("CTS") && s5.equals(s3) && s6.matches("[0-9]{4}"))
+ b=true;
+ else{
+ b=false;}
+ return b;
+ }
+ }
+29.Remove Elements
+Write a program to remove all the elements of the given length and return the size of the
+final array as output. If there is no element of the given length, return the size of the same
+array as output.
+Include a class UserMainCode with a static method removeElements which accepts a
+string
+array, the number of elements in the array and an integer. The return type (integer) should
+return the size of the final array as output.
+Create a Class Main which would be used to accept Input String array and a number and call
+the static method present in UserMainCode.
+Assume maximum length of array is 20.
+Input and Output Format:
+Input consists of a integers that corresponds to n, followed by n strings and finally m which
+corresponds to the length value.
+Output consists of a single Integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+5
+a
+bb
+b
+ccc
+ddd
+2
+Sample Output 1:
+4
+Main
+import java.util.*;
+public class Main
+{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+int n=Integer.parseInt(sc.nextLine());
+String[] a=new String[n];
+for(int i=0;i<n;i++)
+a[i]=sc.nextLine();
+int m=Integer.parseInt(sc.nextLine());
+System.out.println(UserMainCode.removeElements(a,m));
+sc.close();
+}
+}
+UserMainCode
+public class UserMainCode {
+ public static int removeElements(String[] a,int m){
+ int u=a.length;
+ for(int i=0;i<a.length;i++)
+ {
+ if(a[i].length()==m)
+ u--;
+ }
+ return u;
+ }
+ }
+30.Find the difference between Dates in months
+Given a method with two date strings in yyyy-mm-dd format as input. Write code to find the
+difference between two dates in months.
+Include a class UserMainCode with a static method getMonthDifference which accepts
+two
+date strings as input.
+The return type of the output is an integer which returns the diffenece between two dates
+in months.
+Create a class Main which would get the input and call the static
+method getMonthDifference present in the UserMainCode.
+Input and Output Format:
+Input consists of two date strings.
+Format of date : yyyy-mm-dd.
+Output is an integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+2012-03-01
+2012-04-16
+Sample Output 1:
+1
+Sample Input 2:
+2011-03-01
+2012-04-16
+Sample Output 2:
+13
+Main
+import java.text.*;
+ import java.util.*;
+public class Main {
+ public static void main(String[] args) throws ParseException {
+ Scanner sc=new Scanner(System.in);
+ String s1=sc.next();
+ String s2=sc.next();
+ System.out.println(UserMainCode.getMonthDifference(s1,s2));
+sc.close();
+}}
+UserMainCode
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+public class UserMainCode {
+ public static int getMonthDifference(String s1, String s2) throws
+ParseException {
+ SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+ Date d1=sdf.parse(s1);
+ Date d2=sdf.parse(s2);
+ Calendar cal=Calendar.getInstance();
+ cal.setTime(d1);
+ int months1=cal.get(Calendar.MONTH);
+ int year1=cal.get(Calendar.YEAR);
+ cal.setTime(d2);
+ int months2=cal.get(Calendar.MONTH);
+ int year2=cal.get(Calendar.YEAR);
+ int n=((year2-year1)*12)+(months2-months1);
+ return n;
+ }
+
+}
+31.Sum of cubes and squares of elements in an array
+Write a program to get an int array as input and identify even and odd numbers. If number
+is odd get cube of it, if number is even get square of it. Finally add all cubes and squares
+together and return it as output.
+Include a class UserMainCode with a static method addEvenOdd which accepts integer
+array as input.
+The return type of the output is an integer which is the sum of cubes and squares of
+elements in the array.
+Create a class Main which would get the input and call the static
+method addEvenOdd present in the UserMainCode.
+Input and Output Format:
+Input consists of integer array.
+Output is an integer sum.
+Refer sample output for formatting specifications.
+Sample Input 1:
+5
+2
+6
+3
+4
+5
+Sample Output 1:
+208
+Main
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) {
+ Scanner sc=new Scanner(System.in);
+ int n=sc.nextInt();
+int a[]=new int[n];
+for(int i=0;i<n;i++){
+ a[i]=sc.nextInt();
+}
+System.out.println(UserMainCode.addEvenOdd(a));
+sc.close();
+}
+}
+UserMainCode
+public class UserMainCode6 {
+ public static int addEvenOdd(int[] a) {
+ int n1=0,n2=0;
+ for(int i=0;i<a.length;i++)
+ if(a[i]%2==0)
+ n1+=(a[i]*a[i]);
+ else
+ n2+=(a[i]*a[i]*a[i]);
+ return n1+n2;
+ }
+}
+32.IP Validator
+Write a program to read a string and validate the IP address. Print “Valid” if the IP address is
+valid, else print “Invalid”.
+Include a class UserMainCode with a static method ipValidator which accepts a string.
+The
+return type (integer) should return 1 if it is a valid IP address else return 2.
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string that corresponds to an IP.
+Output consists of a string(“Valid” or “Invalid”).
+Refer sample output for formatting specifications.
+Note: An IP address has the format a.b.c.d where a,b,c,d are numbers between 0-255.
+Sample Input 1:
+132.145.184.210
+Sample Output 1:
+Valid
+Sample Input 2:
+132.145.184.290
+Sample Output 2:
+Invalid
+Main
+ import java.util.*;
+ public class Main7 {
+ public static void main(String[] args) {
+ Scanner sc=new Scanner(System.in);
+ String ipAddress=sc.next();
+ boolean b=UserMainCode7.validateIpAddress(ipAddress);
+ if(b==true)
+ System.out.println("Valid");
+ else
+ System.out.println("Invalid");
+ sc.close();
+ }
+
+ }
+
+UserMainCode
+import java.util.StringTokenizer;
+public class UserMainCode7 {
+ public static boolean validateIpAddress(String ipAddress) {
+ boolean b1=false;
+ StringTokenizer t=new StringTokenizer(ipAddress,".");
+ int a=Integer.parseInt(t.nextToken());
+ int b=Integer.parseInt(t.nextToken());
+ int c=Integer.parseInt(t.nextToken());
+ int d=Integer.parseInt(t.nextToken());
+ if((a>=0 && a<=255)&&(b>=0 && b<=255)&&(c>=0 && c<=255)&&(d>=0
+ && d<=255))
+ b1=true;
+ return b1;
+ }
+}
+33.Difference between two dates in days
+Get two date strings as input and write code to find difference between two dates in days.
+Include a class UserMainCode with a static method getDateDifference which accepts two 
+date strings as input.
+The return type of the output is an integer which returns the diffenece between two dates
+in days.
+Create a class Main which would get the input and call the static
+method getDateDifference present in the UserMainCode.
+Input and Output Format:
+Input consists of two date strings.
+Format of date : yyyy-mm-dd.
+Output is an integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+2012-03-12
+2012-03-14
+Sample Output 1:
+2
+Sample Input 2:
+2012-04-25
+2012-04-28
+Sample Output 2:
+3
+Main
+import java.text.ParseException;
+import java.util.*;
+public class Main {
+public static void main(String[] args) throws ParseException 
+{
+Scanner s=new Scanner(System.in);
+String s1=s.nextLine();
+String s2=s.nextLine();
+int output=UserMainCode.getDateDifference(s1,s2);
+System.out.println(output);
+s.close();
+}
+}
+UserMainCode
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+public class UserMainCode {
+public static int getDateDifference(String s1,String s2) throws ParseException
+{
+SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+Date d=sd.parse(s1);
+Calendar c=Calendar.getInstance();
+c.setTime(d);
+long d1=c.getTimeInMillis();
+d=sd.parse(s2);
+c.setTime(d);
+long d2=c.getTimeInMillis();
+int n=Math.abs((int) ((d1-d2)/(1000*3600*24)));
+return n;
+} 
+}
+34.File Extension
+Write a program to read a file name as a string and find out the file extension and return it
+as output. For example, the file sun.gif has the extension gif.
+Include a class UserMainCode with a static method fileIdentifier which accepts a string. The
+return type (string) should return the extension of the input string (filename).
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string that corresponds to a file name.
+Output consists of a string(extension of the input string (filename)).
+Refer sample output for formatting specifications.
+Sample Input 1:
+sun.gif
+Sample Output 1:
+Gif
+Main
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+System.out.println("enter the string");
+String s1=s.nextLine();
+String output=UserMainCode.fileIdentifier(s1);
+System.out.println(output); 
+s.close();
+}
+}
+UserMainCode
+import java.util.*;
+public class UserMainCode {
+public static String fileIdentifier(String s1)
+{
+StringTokenizer t=new StringTokenizer(s1,".");
+t.nextToken();
+String s2=t.nextToken();
+return s2;
+}
+}
+35.Find common characters and unique characters in string
+Given a method with two strings as input. Write code to count the common and unique
+letters in the two strings.
+Note:
+- Space should not be counted as a letter.
+- Consider letters to be case sensitive. ie, "a" is not equal to "A".
+Include a class UserMainCode with a static method commonChars which accepts two
+strings as input.
+The return type of the output is the count of all common and unique characters in the two
+strings.
+Create a class Main which would get the inputs and call the static
+method commonChars present in the UserMainCode. 
+Input and Output Format:
+Input consists of two strings.
+Output is an integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+a black cow
+battle ship
+Sample Output 1:
+2
+[Explanation : b, l and a are the common letters between the 2 input strings. But 'a'
+appears
+more than once in the 1st string. So 'a' should not be considered while computing the count
+value.]
+Sample Input 2:
+australia
+sri lanka
+Sample Output 2:
+4
+Main
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+String s1=sc.nextLine();
+String s2=sc.nextLine();
+StringBuffer sb1=new StringBuffer(s1.replace(" ","")); 
+StringBuffer sb2=new StringBuffer(s2.replace(" ",""));
+int output=UserMainCode.commonChars(s1,s2,sb1,sb2);
+System.out.println(output);
+sc.close();
+}
+}
+UserMainCode
+import java.util.*;
+public class UserMainCode {
+public static int commonChars(String s1,String s2,StringBuffer sb1,StringBuffer
+sb2) {
+for(int i=0;i<sb1.length();i++){
+int c=0;
+for(int j=i+1;j<sb1.length();j++){
+if(sb1.charAt(i)==sb1.charAt(j)){
+sb1.deleteCharAt(j);
+c++;
+}
+}
+if(c>=1){
+sb1.deleteCharAt(i);
+}
+}
+for(int i=0;i<sb2.length();i++){
+int c=0;
+for(int j=i+1;j<sb2.length();j++){
+if(sb2.charAt(i)==sb2.charAt(j)){
+sb2.deleteCharAt(j); 
+c++;
+}
+}
+if(c>=1){
+sb2.deleteCharAt(i);
+}
+}
+int count=0;
+for(int i=0;i<sb1.length();i++){
+for(int j=0;j<sb2.length();j++){
+if(sb1.charAt(i)==sb2.charAt(j)){
+count++;
+}
+}
+}
+return (count);
+}
+} 
+36.Initial Format
+Write a program to input a person's name in the format "FirstName LastName" and return
+the person name in the following format - "LastName, InitialOfFirstName".
+Include a class UserMainCode with a static method nameFormatter which accepts a
+string.
+The return type (string) should return the expected format.
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format: 
+Input consists of a string that corresponds to a Person's name.
+Output consists of a string(person's name in expected format).
+Refer sample output for formatting specifications.
+Sample Input :
+Jessica Miller
+Sample Output:
+Miller, J
+Main
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.nextLine();
+String output=UserMainCode.nameFormatter(s1);
+System.out.println(output);
+s.close();
+}
+}
+UserMainCode
+import java.util.*;
+public class UserMainCode {
+public static String nameFormatter(String s1) {
+StringBuffer sb=new StringBuffer();
+StringTokenizer st=new StringTokenizer(s1," ");
+String s2=st.nextToken();
+String s3=st.nextToken(); 
+sb.append(s3).append(",");
+sb.append(s2.substring(0,1).toUpperCase());
+return sb.toString();
+}
+}
+37.Character cleaning
+Write a program to input a String and a character, and remove that character from the given
+String. Print the final string.
+Include a class UserMainCode with a static method removeCharacter which accepts a
+string
+and a character. The return type (string) should return the character cleaned string.
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string and a character.
+Output consists of a string(the character cleaned string).
+Refer sample output for formatting specifications.
+Sample Input :
+elephant
+e
+Sample Output:
+Lphant
+Main
+import java.util.*;
+public class Main { 
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.nextLine();
+String c=s.nextLine();
+String output=UserMainCode.removeCharacter(s1,c);
+System.out.println(output);
+}
+}
+UserMainCode
+import java.util.*;
+public class UserMainCode {
+public static String removeCharacter(String s1,String c)
+{
+String d=s1.replace(c,"");
+return d;
+}
+}
+38.Vowel Check
+Write a program to read a String and check if that String contains all the vowels. Print "yes"
+if the string contains all vowels else print "no".
+Include a class UserMainCode with a static method getVowels which accepts a string. The
+return type (integer) should return 1 if the String contains all vowels else return -1.
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format: 
+Input consists of a string.
+Output consists of a string("yes" or "no").
+Refer sample output for formatting specifications.
+Sample Input 1:
+abceiduosp
+Sample Output 1:
+yes
+Sample Input 2:
+bceiduosp
+Sample Output 2:
+No
+Main
+import java.util.*;
+public class User {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.nextLine();
+String s2=s1.toLowerCase();
+int output=UserMainCode.getVowels(s2);
+//System.out.println(output);
+if(output==1)
+{
+System.out.println("yes");
+}
+else
+System.out.println("no"); 
+s.close();
+}
+}
+UserMainCode
+import java.util.*;
+public class UserMainCode {
+public static int getVowels(String s2) {
+if(s2.contains("a") && s2.contains("e") && s2.contains("i") && s2.contains("o") &&
+s2.contains("u") )
+{
+return 1;
+}
+else
+return -1;
+}
+}
+39.Swap Characters
+Write a program to input a String and swap the every 2 characters in the string. If size is an
+odd number then keep the last letter as it is. Print the final swapped string.
+Include a class UserMainCode with a static method swapCharacter which accepts a string.
+The return type (String) should return the character swapped string.
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of a string. 
+Refer sample output for formatting specifications.
+Sample Input 1:
+TRAINER
+Sample Output 1:
+RTIAENR
+Sample Input 2:
+TOM ANDJERRY
+Sample output 2:
+OT MNAJDREYR
+Main
+import java.util.*;
+public class Main
+{
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.nextLine();
+String output=UserMainCode.swapCharacter(s1);
+System.out.println(output);
+s.close();
+}
+}
+UserMainCode
+import java.util.*;
+public class UserMainCode {
+public static String swapCharacter(String s1)
+{ 
+StringBuffer sb=new StringBuffer();
+int l=s1.length();
+if(l%2==0)
+{
+for(int i=0;i<s1.length()-1;i=i+2)
+{
+char a=s1.charAt(i);
+char b=s1.charAt(i+1);
+sb.append(b).append(a);
+}
+return sb.toString();
+}
+else
+{
+for(int i = 0;i<s1.length()-1;i=i+2)
+{
+char a=s1.charAt(i);
+char b=s1.charAt(i+1);
+sb.append(b).append(a);
+}
+sb.append(s1.charAt(l-1));
+return sb.toString();
+}
+}
+}
+40.Average of Elements in Hashmap
+Given a method with a HashMap<int, float> as input. Write code to find out avg of all 
+values whose keys are even numbers. Round the average to two decimal places and return
+as output.
+[Hint : If the average is 5.901, the rounded average value is 5.9 . It the average is 6.333, the
+rounded average value is 6.33 . ]
+Include a class UserMainCode with a static method avgOfEven which
+accepts a HashMap<int, float> as input.
+The return type of the output is a floating point value which is the average of all values
+whose key elements are even numbers.
+Create a class Main which would get the input and call the static method avgOfEven
+present
+in the UserMainCode.
+Input and Output Format:
+Input consists of the number of elements in the HashMap and the HashMap<int, float>.
+Output is a floating point value that corresponds to the average.
+Refer sample output for formatting specifications.
+Sample Input 1:
+3
+1
+2.3
+2
+4.1
+6
+6.2
+Sample Output 1:
+5.15 
+Sample Input 2:
+3
+9
+3.1
+4
+6.3
+1
+2.6
+Sample Output 2:
+6.3
+Main
+import java.util.HashMap;
+import java.util.Scanner;
+public class Main {
+public static void main(String []args){
+Scanner sc=new Scanner(System.in);
+int s=sc.nextInt();
+HashMap<Integer,Float>hm=new HashMap<Integer,Float>();
+for(int i=0;i<s;i++)
+{
+int r=sc.nextInt();
+Float j=sc.nextFloat();
+hm.put(r,j);
+}
+System.out.println(UserMainCode.display(hm));
+sc.close(); 
+}
+}
+UserMainCode
+import java.text.DecimalFormat;
+import java.util.*;
+public class UserMainCode
+{
+public static String display(HashMap<Integer,Float>hm)
+{
+float sum=0;
+int count=0;
+DecimalFormat df=new DecimalFormat("#.00");
+Iterator<Integer> it=hm.keySet().iterator();
+while(it.hasNext())
+{
+int y=it.next();
+if(y%2==0)
+{
+sum=(float) (sum+hm.get(y));
+count++;
+}}
+float d=sum/count;
+return df.format(d);
+}
+} 
+41.Calculate Average – Hash Map
+Write amethod that accepts the input data as a hash map and finds out the avg of all values
+whose keys are odd numbers.
+Include a class UserMainCode with a static method calculateAverage which accepts
+aHashMap<Integer,Double> and the size of the HashMap. The return type (Double) should
+return the calculated average. Round the average to two decimal places and return it.
+Create a Class Main which would be used to accept Input values and store it as a hash map,
+and call the static method present in UserMainCode.
+Input and Output Format:
+Input consists of an integer n corresponds to number of hash map values, followed by 2n
+values. (index followed by value).
+Output consists of a Double.
+Refer sample input and output for formatting specifications.
+Sample Input :
+4
+1
+3.41
+2
+4.1
+3
+1.61
+4
+2.5
+Sample Output :
+2.51
+Main
+import java.util.*;
+import java.text.*;
+public class Main {
+public static void main(String[] arg)
+{
+HashMap<Integer,Double> hm=new HashMap<Integer,Double>();
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+for(int i=0;i<n;i++)
+{
+int a=sc.nextInt();
+double s=sc.nextDouble();
+hm.put(a,s);
+}
+System.out.println(UserMaincode.dis(hm));}}
+UserMainCode
+class UserMaincode
+{
+public static double dis(HashMap<Integer,Double> h1)
+{
+double avg=0.0,sum=0.0;
+int k=0;
+for(Map.Entry m:h1.entrySet())
+{
+int a=(Integer)m.getKey();
+if(a%2!=0)
+{
+Double d=(Double) m.getValue();
+sum=sum+d;
+k++;
+}
+}
+avg = (double)sum/k;
+DecimalFormat df = new DecimalFormat(".##");
+String b1 = df.format(avg);
+double b = Double.parseDouble(b1);
+return b;}
+42.Count Sequential Characters
+109.Get a string as input and write code to count the number of characters which gets
+repeated 3 times consecutively and return that count (ignore case). If no character gets
+repeated 3 times consecutively return -1.
+Include a class UserMainCode with a static method countSequentialChars which
+accepts a
+string as input.
+The return type of the output is the repeat count.
+Create a class Main which would get the input and call the static
+method countSequentialChars present in the UserMainCode.
+Input and Output Format:
+Input consists a string.
+Output is an integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+abcXXXabc
+Sample Output 1:
+1
+Sample Input 2:
+aaaxxyzAAAx
+Sample Output 2:
+2
+Main
+import java.util.*;
+import java.text.*;
+public class Main {
+public static void main(String[] args) {
+Scanner sc=new Scanner (System.in);
+ String input1=sc.next();
+System.out.println(UserMainCode.consecutiveRepeatitionOfChar(input1));
+}
+}
+UserMainCode
+class UserMainCode
+{
+public static int consecutiveRepeatitionOfChar(String input1)
+{
+int c=0;
+int n=0;
+for(int i=0;i<input1.length()-1;i++){
+if(input1.charAt(i)==input1.charAt(i+1))
+n++;
+else
+n=0;
+if(n==2)
+c++; }
+return c;
+}
+}
+43.Length of the Largest Chunk
+Write a program to read a string and find the length of the largest chunk in the string. If
+there are no chunk print “No chunks” else print the length.
+NOTE: chunk is the letter which is repeating 2 or more than 2 times.
+Include a class UserMainCode with a static method largestChunk which accepts a
+string.
+The return type (Integer) should return the length of the largest chunk if the chunk is
+present, else return -1.
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Refer sample output for formatting specifications.
+Sample Input 1:
+You are toooo good
+Sample Output 1:
+4
+(Because the largest chunk is letter 'o' which is repeating 4 times)
+Sample Input 2:
+who are u
+Sample Output 2:
+No chunks
+Main
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+String s1=sc.nextLine();
+System.out.println(UserMainCode.largestChunk(s1));
+}
+}
+UserMaincode
+class UserMainCode
+{
+public static int largestChunk(String s1) {
+int max=1;
+int b=0;
+StringTokenizer t=new StringTokenizer(s1," ");
+while(t.hasMoreTokens()){
+String s2=t.nextToken();
+int n=0;
+for(int i=0;i<s2.length()-1;i++)
+if(s2.charAt(i)==s2.charAt(i+1))
+n++;
+if(n>max)
+{
+max=n;
+b=max+1;
+}
+}
+return b;
+}
+}
+44.Unique Characters in a string
+Write a program that takes a string and returns the number of unique characters in the
+string. If the given string doest not contain any unique characters return -1
+Include a class UserMainCode with a static method uniqueCounter which accepts a
+string as
+input.
+The return type of the output is the count of all unique characters in the strings.
+Create a class Main which would get the input and call the static
+method uniqueCounter present in the UserMainCode.
+Input and Output Format:
+Input consists a string.
+Output is an integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+HelloWorld
+Sample Output 1:
+5
+Sample Input 2:
+coco
+Sample Output 2:
+-1
+Main
+import java.util.*;
+import java.text.*;
+public class Main {
+public static void main(String[] args) throws ParseException {
+Scanner sc = new Scanner(System.in);
+String s1 = sc.nextLine();
+System.out.println(UserMaincode.uniqueCounter(s1));
+}}
+UserMainCode
+class UserMaincode
+{
+ public static int uniqueCounter(String s1)
+ {
+StringBuffer sb = new StringBuffer(s1);
+for (int i = 0; i < sb.length(); i++) {
+int count = 0;
+for (int j = i + 1; j < sb.length(); j++) {
+if (sb.charAt(i) == sb.charAt(j)) {
+sb.deleteCharAt(j);
+j--;
+count++;
+}
+}
+if (count >= 1) {
+sb.deleteCharAt(i);
+i--;
+}
+}
+return sb.length();
+}
+}
+45.Name Shrinking
+Write a program that accepts a string as input and converts the first two names into
+dotseparated
+initials and printa the output.
+Input string format is 'fn mn ln'. Output string format is 'ln [mn's 1st character].[fn's 1st
+character]'
+Include a class UserMainCode with a static method getFormatedString which accepts a
+string. The return type (String) should return the shrinked name.
+Create a Class Main which would be used to accept Input String and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of a String.
+Refer sample output for formatting specifications.
+Sample Input:
+Sachin Ramesh Tendulkar
+Sample Output:
+Tendulkar R.S
+Main
+import java.text.*;
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+ String s1=sc.nextLine();
+System.out.println(UserMainCode.getFormatedString(s1));
+}
+}
+UserMainCode
+class UserMainCode
+{
+public static String getFormatedString(String s1) {
+StringBuffer sb=new StringBuffer();
+StringTokenizer st=new StringTokenizer(s1," ");
+String s2=st.nextToken();
+String s3=st.nextToken();
+String s4=st.nextToken();
+sb.append(s4).append(" ");
+sb.append(s3.substring(0,1));
+sb.append(".");
+sb.append(s2.substring(0,1));
+return sb.toString();
+}
+}
+46.Odd Digit Sum
+Write a program to input a String array. The input may contain digits and alphabets
+(“de5g4G7R”). Extract odd digits from each string and find the sum and print the output.
+For example, if the string is "AKj375A" then take 3+7+5=15 and not as 375 as digit.
+Include a class UserMainCode with a static method oddDigitSum which accepts a string
+array and the size of the array. The return type (Integer) should return the sum.
+Create a Class Main which would be used to accept Input Strings and call the static method
+present in UserMainCode.
+Assume maximum length of array is 20.
+Input and Output Format:
+Input consists of an integer n, corresponds to the number of strings, followed by n Strings.
+Output consists of an Integer.
+Refer sample output for formatting specifications.
+Sample Input :
+3
+cog2nizant1
+al33k
+d2t4H3r5
+Sample Output :
+15
+(1+3+3+3+5)
+Main
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+int s1=sc.nextInt();
+String[] s2 = new String[s1];
+for (int i = 0; i < s1; i++) {
+s2[i] = sc.next();
+}
+System.out.println(UserMainCode. oddDigitSum(s2));
+}}
+UserMainCode
+public class UserMainCode {
+public static int oddDigitSum (String[] s1) {
+int sum=0;
+for(int i=0;i<s1.length;i++)
+for(int j=0;j<s1[i].length();j++){
+char c=s1[i].charAt(j);
+if(Character.isDigit(c)){
+if(c%2!=0)
+{
+String t=String.valueOf(c);
+int n=Integer.parseInt(t);
+sum=sum+n; } }}
+return sum;
+}
+}
+47.Unique Number
+Write a program that accepts an Integer as input and finds whether the number is Unique or
+not. Print Unique if the number is “Unique”, else print “Not Unique”.
+Note: A Unique number is a positive integer (without leading zeros) with no duplicate
+digits.For example 7, 135, 214 are all unique numbers whereas 33, 3121, 300 are not.
+Include a class UserMainCode with a static method getUnique which accepts an integer.
+The return type (Integer) should return 1 if the number is unique else return -1.
+Create a Class Main which would be used to accept Input Integer and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of an integer .
+Output consists of a String (“Unique” or “Not Unique”).
+Refer sample output for formatting specifications.
+Sample Input 1:
+123
+Sample Output 1:
+Unique
+Sample Input 2:
+33
+Sample Output 2:
+Not Unique
+import java.util.*;
+import java.text.*;
+public class Main{
+public static void main(String[]args)
+{int j=0;
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+j=UserMainCode.getUnique(n);
+if(j>0)
+{
+System.out.println("Not Unique");
+}
+else if(j==0)
+{
+System.out.println("Unique");
+}
+}}
+class UserMainCode
+{
+public static int getUnique(int n)
+{
+int []a=new int[100];
+int i=0,count=0;
+while(n!=0)
+{
+int num=n%10;
+a[i]=num;
+i++;
+n=n/10;
+}
+for(int j=0;j<=i-1;j++)
+{
+for(int k=j+1;k<=i-1;k++)
+{
+if(a[j]==a[k]){
+count++;
+}
+}}
+return count;
+}
+}
+48.Sum of Lowest marks
+Given input as HashMap, value consists of marks and rollno as key.Find the sum of the
+lowest three subject marks from the HashMap.
+Include a class UserMainCode with a static method getLowest which accepts a
+Hashmap
+with marks and rollno.
+The return type of the output is the sum of lowest three subject marks.
+Create a class Main which would get the input and call the static method getLowest
+present
+in the UserMainCode.
+Input and Output Format:
+First line of the input corresponds to the HashMap size.
+Input consists a HashMap with marks and rollno.
+Output is an integer which is the sum of lowest three subject marks.
+Refer sample output for formatting specifications.
+Sample Input 1:
+5
+1
+54
+2
+85
+3
+74
+4
+59
+5
+57
+Sample Output 1:
+170
+Sample Input 2:
+4
+10
+56
+20
+58
+30
+87
+40
+54
+Sample Output 2:
+168
+Main
+import java.util.*;
+public class Main {
+public static void main(String args[]){
+Scanner sc = new Scanner(System.in);
+int n=Integer.parseInt(sc.nextLine());
+HashMap<Integer,Integer>h1=new HashMap<Integer,Integer>();
+for(int i=0;i<n;i++)
+{
+h1.put(sc.nextInt(),sc.nextInt());
+}
+System.out.println(UserMainCode.getLowest(h1));
+}
+}
+UserMainCode
+class UserMainCode {
+public static int getLowest(HashMap<Integer,Integer>h1)
+{
+ArrayList<Integer>a1=new ArrayList<Integer>();
+int m=0;
+Iterator<Integer> it=h1.keySet().iterator();
+while(it.hasNext())
+{
+int x=it.next();
+a1.add(h1.get(x));
+}
+Collections.sort(a1);
+m=a1.get(0)+a1.get(1)+a1.get(2);
+return m;
+}}
+49.Color Code Validation same as 21
+Give a String as colour code as input and write code to validate whether the given string is a
+valid color code or not.
+Validation Rule:
+String should start with the Character '#'.
+Length of String is 7.
+It should contain 6 Characters after '#' Symbol.
+It should contain Characters between 'A-F' and Digits '0-9'.
+If String acceptable the return true otherwise false.
+Include a class UserMainCode with a static method validateColourCode which accepts a
+string as input.
+The return type of the output is a boolean which returns true if its is a valid color code else it
+returns false.
+Create a class Main which would get the input and call the static
+method validateColourCode present in the UserMainCode.
+Input and Output Format:
+Input consists a string corresponding to the color code.
+Output is a boolean which returns true or false
+Refer sample output for formatting specifications.
+Sample Input 1:
+#99FF33
+Sample Output 1:
+true
+Sample Input 2:
+#CCCC99#
+Sample Output 2:
+False
+Main
+import java.util.*;
+public class Add {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.next();
+boolean b=userMainCode. validateColourCode (s1);
+if(b==true)
+System.out.println("valid color code");
+else
+System.out.println("invalid color code");
+}
+UserMainCode
+static class userMainCode{
+public static boolean validateColourCode (String s1)
+boolean b=false;
+if(s1.length()==7&&s1.matches("#[A-F0-9]{1,}")){
+b=true;
+}
+return b;
+}}}
+50.Repeating set of characters in a string
+Get a string and a positive integer n as input .The last n characters should repeat the
+number of times given as second input.Write code to repeat the set of character from the
+given string.
+Include a class UserMainCode with a static method getString which accepts a string and
+an
+integer n as input.
+The return type of the output is a string with repeated n characters.
+Create a class Main which would get the input and call the static method getString
+present
+in the UserMainCode.
+Input and Output Format:
+Input consists a string and a positive integer n.
+Output is a string with repeated characters.
+Refer sample output for formatting specifications.
+Sample Input 1:
+Cognizant
+3
+Sample Output 1:
+Cognizantantantant
+Sample Input 2:
+myacademy
+2
+Sample Output 2:
+Myacademymymy
+Main
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner s= new Scanner(System.in);
+String input= s.next();
+int n=s.nextInt();
+System.out.println(userMainCode.getString(input,n));
+}
+}
+UserMainCode
+class userMainCode {
+public static String getString(String input, int n){
+StringBuffer sb=new StringBuffer();
+ sb.append(input);
+for (int i=0;i<n;i++){
+sb.append(input.substring(input.length()-n,input.length()));
+}
+return sb.toString();
+}
+}

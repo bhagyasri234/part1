@@ -1,0 +1,1242 @@
+51.Find Digits
+For a given double number with atleast one decimal value, Write a program to compute the
+number of digits before and after the decimal point in the following format –
+noOfDigitsBeforeDecimal:noOfDigitsAfterDecimal.
+Note: Ignore zeroes at the end of the decimal (Except if zero is the only digit after decimal.
+Refer Example 2 and 3)
+Include a class UserMainCode with a static method findNoDigits which accepts the
+decimal
+value. The return type is string.
+Create a Class Main which would be used to accept the string and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a double.
+Output consists of string.
+Refer sample output for formatting specifications.
+Sample Input 1:
+843.21
+Sample Output 1:
+3:2
+Sample Input 2:
+20.130
+Sample Output 2:
+2:2
+Sample Input 3:
+20.130
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+double d=s.nextDouble();
+System.out.println(UserMainCode.findNoDigits(d));
+}}
+import java.util.StringTokenizer;
+public class UserMainCode {
+public static String findNoDigits(double d) {
+int n1=0,n2=0;
+String s=String.valueOf(d);
+StringTokenizer t=new StringTokenizer(s,".");
+String s1=t.nextToken();
+String s2=t.nextToken();
+n1=s1.length();
+n2=s2.length();
+if(s1.charAt(0)=='0')
+n1=s1.length()-1;
+if(n2!=1)
+if(s2.charAt(s2.length()-1)=='0')
+n2=s2.length()-1;
+String s3=String.valueOf(n1)+":"+String.valueOf(n2);
+return s3;
+}
+}
+52.Employees & Designations
+A Company wants to obtain employees of a particular designation. You have been assigned
+as the programmer to build this package. You would like to showcase your skills by creating
+a quick prototype. The prototype consists of the following steps:
+Read Employee details from the User. The details would include name and designaton in
+the given order. The datatype for name and designation is string.
+Build a hashmap which contains the name as key and designation as value.
+You decide to write a function obtainDesignation which takes the hashmap and
+designation as input and returns a string List of employee names who belong to that
+designation as output. Include this function in class UserMainCode. Display employee
+name's in ascending order.
+Create a Class Main which would be used to read employee details in step 1 and build the
+hashmap. Call the static method present in UserMainCode.
+Input and Output Format:
+Input consists of employee details. The first number indicates the size of the employees. The
+next two values indicate the employee name employee designation. The last string would
+be the designation to be searched.
+Output consists of a array values containing employee names.
+Refer sample output for formatting specifications.
+Sample Input 1:
+4
+Manish
+MGR
+Babu
+CLK
+Rohit
+MGR
+Viru
+PGR
+MGR
+Sample Output 1:
+Manish
+Rohit
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+int k1=Integer.parseInt(sc.nextLine());
+LinkedHashMap<String,String> hm=new LinkedHashMap<String,String>();
+for(int i=0;i<k1;i++)
+{
+String k=sc.nextLine();
+String s=sc.nextLine();
+hm.put(k,s);
+}
+String n=sc.nextLine();
+LinkedHashMap<String,String> hm1=new LinkedHashMap<String,String>();
+hm1=UserMainCode.obtainDesignation(hm,n);
+Iterator<String> it=hm1.keySet().iterator();
+while(it.hasNext())
+{
+String s2=it.next();
+System.out.println(s2);
+}
+}
+}
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+public class UserMainCode
+{
+public static LinkedHashMap<String,String>
+obtainDesignation(LinkedHashMap<String,String> h1,String n)
+{
+int k=0;
+LinkedHashMap<String,String> hm1=new LinkedHashMap<String,String>();
+Iterator<String>it=h1.keySet().iterator();
+while(it.hasNext())
+{
+String s2=it.next();
+String s3=h1.get(s2);
+if(s3.equals(n))
+hm1.put(s2,s3);
+}
+return hm1;
+}}
+53. Grade Calculator
+A School wants to give assign grades to its students based on their marks. You have been
+assigned as the programmer to automate this process. You would like to showcase your
+skills by creating a quick prototype. The prototype consists of the following steps:
+Read student details from the User. The details would include name, mark in the given
+order. The datatype for name is string, mark is float.
+You decide to build a hashmap. The hashmap contains name as key and mark as value.
+BUSINESS RULE:
+1. If Mark is less than 60, then grade is FAIL.
+2. If Mark is greater than or equal to 60, then grade is PASS.
+Note: FAIL/PASS should be in uppercase.
+Store the result in a new Hashmap with name as Key and grade as value.
+4. You decide to write a function calculateGrade which takes the above hashmap as input
+and returns the hashmap as output. Include this function in class UserMainCode.
+Create a Class Main which would be used to read student details in step 1 and build the
+hashmap. Call the static method present in UserMainCode.
+Input and Output Format:
+Input consists of student details. The first number indicates the size of the students. The
+next two values indicate the name, mark.
+Output consists of a name and corresponding grade for each student.
+Refer sample output for formatting specifications.
+Sample Input 1:
+3
+Avi
+76.36
+Sunil
+68.42
+Raja
+36.25
+Sample Output 1:
+Avi
+PASS
+Sunil
+PASS
+Raja
+FAIL
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+int k1=Integer.parseInt(sc.nextLine());
+LinkedHashMap<String,String> hm=new LinkedHashMap<String,String>();
+for(int i=0;i<k1;i++)
+{
+String k=sc.nextLine();
+String s=sc.nextLine();
+hm.put(k,s);
+}
+String n=sc.nextLine();
+LinkedHashMap<String,String> hm1=new LinkedHashMap<String,String>();
+hm1=UserMainCode.obtainDesignation(hm,n);
+Iterator<String> it=hm1.keySet().iterator();
+while(it.hasNext())
+{
+String s2=it.next();
+System.out.println(s2);
+}
+}
+}
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+public class UserMainCode
+{
+public static LinkedHashMap<String,String>
+obtainDesignation(LinkedHashMap<String,String> h1,String n)
+{
+int k=0;
+LinkedHashMap<String,String> hm1=new LinkedHashMap<String,String>();
+Iterator<String>it=h1.keySet().iterator();
+while(it.hasNext())
+{
+String s2=it.next();
+String s3=h1.get(s2);
+if(s3.equals(n))
+hm1.put(s2,s3);
+}
+return hm1;
+}}
+54. DOB - Validation
+Write a program to validate the Date of Birth given as input in String format (MM/dd/yyyy)
+as per the validation rules given below. Return true for valid dates else return false.
+1. Value should not be null
+2. month should be between 1-12, date should be between 1-31 and year should be a four
+digit number.
+Include a class UserMainCode with a static method ValidateDOB which accepts the string.
+The return type is TRUE / FALSE.
+Create a Class Main which would be used to accept the string and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of TRUE / FALSE.
+Refer sample output for formatting specifications.
+Sample Input 1:
+12/23/1985
+Sample Output 1:
+TRUE
+Sample Input 2:
+31/12/1985
+Sample Output 2:
+FALSE
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+{
+String str=new String();
+Scanner sc=new Scanner(System.in);
+str=sc.nextLine();
+Boolean b=UserMainCode.ValidateDOB(str);
+if(b==”true”)
+ System.out.println("TRUE");
+if(b==”false”)
+ System.out.println("FALSE");
+}
+}
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class UserMainCode {
+public static Boolean ValidateDOB(String str){
+ Boolean b=”false”;
+ SimpleDateFormat sdf=new SimpleDateFormat("MM/dd/yyyy");
+ sdf.setLenient(false);
+ try
+ {
+ Date d1=sdf.parse(str);
+ return b=”true”;
+ }
+ catch(Exception e)
+ {
+ return b=”false”;
+ }
+}
+}
+55.Experience Validator
+Write a program to valiadate the experience of an employee.
+An employee who has recently joined the organization provides his year of passing and
+total number of years of experience in String format. Write code to validate his experience
+against the current date.
+1) Input consists of two String first represent the year of passed out and the second string
+reperesent the year of experience.
+2) create a function with name validateExp which accepts two string as input and boolean
+as output.
+3) The difference between current year and year of pass should be more than or equal to
+Experience
+Return true if all condition are true.
+Note:Conside 2015 as the current year.
+Include a class UserMainCode with the static function validateExp
+Create a Class Main which would be used to accept the boolean and call the static method
+present in UserMainCode.
+Input and Output Formate:
+Input consists of two Strings.
+output will display true if the given data are correct.
+Sample Input:
+2001
+5
+Sample Output:
+TRUE
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+public class Main {
+public static void main(String args[]){
+Scanner sc = new Scanner(System.in);
+String s=sc.nextLine();
+String s1=sc.nextLine();
+System.out.println(UserMainCode.validateExp(s,s1));
+}
+}
+import java.util.Calendar;
+import java.util.Date;
+public class UserMainCode {
+public static boolean validateExp(String s,String s1)
+{
+int y1=Integer.parseInt(s);
+Date d=new Date();
+Calendar c=Calendar.getInstance();
+int y2=c.get(Calendar.YEAR);
+int y=Math.abs(y1-y2);
+int e=Integer.parseInt(s1);
+if(y>=e)
+return true;
+else
+return false;
+}}
+56. ArrayList to String Array
+Write a program that performs the following actions:
+Read n strings as input.
+Create an arraylist to store the above n strings in this arraylist.
+Write a function convertToStringArray which accepts the arraylist as input.
+The function should sort the elements (strings) present in the arraylist and convert them
+into a string array.
+Return the array.
+Include a class UserMainCode with the static method convertToStringArray which
+accepts
+an arraylist and returns an array.
+Create a Class Main which would be used to read n strings and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of n+1 integers. The first integer denotes the size of the arraylist, the next n
+strings are values to the arraylist.
+Output consists of an arrayas per step 4.
+Refer sample output for formatting specifications.
+Sample Input 1:
+4
+a
+d
+c
+b
+Sample Output 1:
+a
+b
+c
+d
+import java.util.*;
+public class Main
+{
+ public static void main(String[] args)
+ {
+ Scanner s=new Scanner(System.in);
+ ArrayList<String> l=new ArrayList<String>();
+ int n=s.nextInt();
+ for(int i=0;i<n;i++)
+ {
+ l.add(s.next());
+ }
+ String a[]=new String[n];
+ a=UserMainCode.convertToStringArray(l);
+ for(int j=0;j<n;j++)
+ {
+ System.out.println(a[j]);
+ }
+ }
+}
+import java.util.ArrayList;
+import java.util.Collections;
+class UserMainCode
+{
+ public static String[] convertToStringArray(ArrayList<String> l)
+ {
+ Collections.sort(l);
+ String [] a = l.toArray(new String[l.size()]);
+ return a;
+ }
+}
+57.State ID generator
+Write a program to generate the state ID.
+1)Read n Strings as input(as State Name).
+2)Create a String Array to Store the above Input.
+3)Write a function getStateId which accepts String Array as input.
+4)Create a HashMap<String,String> which stores state name as key and state Id as Value.
+5)The function getStateId returns the HashMap to the Main Class.
+Include UserMainCode Class With static method getStateId which accepts String array and
+return a hashmap.
+Create a Class Main which would be used to read n strings and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input Consists of an integer n denotes the size of the string array.
+Output consists of an HashMap displayed in the string array order.
+Sample Input 1:
+3
+Kerala
+Gujarat
+Goa
+Sample Output 1:
+KER:Kerala
+GUJ:Gujarat
+GOA:Goa
+Main Class
+import java.util.*;
+public class Main
+{
+public static void main(String[] args)
+{
+Scanner s=new Scanner(System.in);
+int n=s.nextInt();
+String[] s1=new String[n];
+for(int i=0;i<n;i++)
+{
+s1[i]=s.next();
+}
+HashMap<String, String> hm = new HashMap<String, String>();
+hm = UserMainCode.putvalues(s1);
+for(Map.Entry<String, String> ans: hm.entrySet())
+{
+System.out.println(ans.getKey()+":"+ans.getValue());
+}
+}}
+User main code
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+public class UserMainCode{
+public static HashMap<String, String> putvalues(String[] s1)
+{
+HashMap<String, String> hm = new HashMap<String, String>();
+ArrayList<String> lst1 = new ArrayList<String>();
+ArrayList<String> lst2 = new ArrayList<String>();
+for(String s : s1)
+lst1.add(s.toUpperCase().substring(0,3));
+for(String s : s1)
+lst2.add(s);
+for(int i=0;i<s1.length;i++)
+{
+hm.put(lst1.get(i),lst2.get(i));
+}
+return hm;
+}
+}
+58. ArrayList to String Array
+Write a program that performs the following actions:
+1.Read m strings as input (fruit names).
+2.Create an arraylist to store the above m strings in this arraylist.
+3.Read n strings as input (fruit names).
+4.Create an arraylist to store the above n strings in this arraylist.
+5.Write a function fruitSelector which accepts the arraylists as input.
+6.Remove all fruits whose name ends with 'a' or 'e' from first arrayList and remove all fruits
+whose name begins with 'm' or 'a' from second arrayList then combine the two lists and
+return the final output as a String array.
+7.If the array is empty the program will print as “No fruit found”
+Include a class UserMainCode with the static method fruitSelector which accepts the two
+arraylists and returns an array.
+Create a Class Main which would be used to read n strings and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of an integer (m) denoting the size of first arraylist. The next m elements
+would be the values of the first arraylist. The next input would be n denoting the size of the
+second arraylist. The next n elements would be the values of the second arraylist.
+Output consists of an array as per step 6. Refer sample output for formatting specifications.
+Sample Input 1:
+3
+Apple
+Cherry
+Grapes
+4
+Orange
+Mango
+Melon
+Apple
+Sample Output 1:
+Cherry
+Grapes
+Orange
+USERMAINCODE:
+import java.util.ArrayList;
+import java.util.*;
+public class UserMainCode {
+public static String[] fruitSelector(ArrayList<String> a1,ArrayList<String> a2)
+{
+ArrayList<String> a3=new ArrayList<String>();
+for(int i=0;i<a1.size();i++)
+{
+String s1=a1.get(i);
+if(s1.charAt(s1.length()-1)!='a'&&s1.charAt(s1.length()-1)!='e'&&s1.charAt(s1.length()-
+1)!='A'&&s1.charAt(s1.length()-1)!='E')
+{
+a3.add(s1);
+}
+}
+ArrayList<String> a4=new ArrayList<String>();
+for(int j=0;j<a2.size();j++)
+{
+String s2=a2.get(j);
+if(s2.charAt(0)!='m'&&s2.charAt(0)!='a'&&s2.charAt(0)!='M'&&s2.charAt(0)!='A')
+{
+a4.add(s2);
+}
+}
+a3.addAll(a4);
+Collections.sort(a3);
+String st[]=new String[a3.size()];
+for(int k=0;k<a3.size();k++)
+{
+st[k]=a3.get(k);
+}
+return st;
+}
+}
+MAIN:
+import java.util.*;
+import java.util.ArrayList;
+public class Main {
+public static void main(String [] args)
+{
+Scanner s=new Scanner(System.in);
+int m=s.nextInt();
+ArrayList<String> aa1=new ArrayList<String>();
+for(int i=0;i<m;i++)
+{
+aa1.add(s.next());
+}
+int n=s.nextInt();
+ArrayList<String> aa2=new ArrayList<String>();
+for(int j=0;j<n;j++)
+{
+aa2.add(s.next());
+}
+int k;
+String st[]=UserMainCode.fruitSelector(aa1,aa2);
+for( k=0;k<st.length;k++)
+{
+System.out.println(st[k]);
+}
+if(st.length==0)
+System.out.println("No Fruit Found");
+s.close();
+}
+}
+59)Elements in ArrayList
+Use Collection Methods.
+Write a program that takes two ArrayLists as input and finds out all elements present either
+in A or B, but not in both.
+Include a class UserMainCode with the static method arrayListSubtractor which accepts the
+two arraylists and returns an array.
+Create a Class Main which would be used to read the inputs and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of an integer (m) denoting the size of first arraylist. The next m elements
+would be the values of the first arraylist. The next input would be n denoting the size of the
+second arraylist. The next n elements would be the values of the second arraylist.
+Output consists of an array. The elements in the output array need to be printed in sorted
+order.
+Refer sample output for formatting specifications.
+Sample Input 1:
+4
+1
+8
+3
+5
+2
+3
+5
+Sample Output 1:
+1
+8
+Sample Input 2:
+4
+9
+1
+3
+5
+4
+1
+3
+5
+6
+Sample Output 2:
+6 
+9
+MAIN:
+import java.util.*;
+public class Main
+{
+public static void main(String[] args)
+{
+int n,m;
+Scanner sin = new Scanner(System.in);
+n = sin.nextInt();
+ArrayList<Integer> a1 = new ArrayList<Integer>(n);
+for(int i=0;i<n;i++)
+{
+int k = sin.nextInt();
+a1.add(k);
+}
+m = sin.nextInt();
+ArrayList<Integer> a2 = new ArrayList<Integer>(m);
+for(int i=0;i<m;i++)
+{
+int k = sin.nextInt();
+a2.add(k);
+}
+int[] result = UserMainCode.arrayListSubtractor(a1,a2);
+Arrays.sort(result);
+for(int i=0;i<result.length;i++)
+System.out.println(result[i]);
+}
+}
+USERMAINCODE:
+import java.util.ArrayList;
+public class UserMainCode
+{
+public static int[] arrayListSubtractor(ArrayList<Integer>
+arrlist1,ArrayList<Integer>
+arrlist2)
+{
+int count=0,key;
+int max = arrlist1.size();
+if(arrlist1.size() < arrlist2.size())
+max = arrlist2.size();
+ArrayList<Integer> temp = new ArrayList<Integer>(max);
+for(int i=0;i<arrlist1.size();i++)
+{
+key = (int)arrlist1.get(i);
+if(arrlist2.indexOf(key) == -1)
+{
+++count;
+temp.add(key);
+}
+}
+for(int i=0;i<arrlist2.size();i++)
+{
+key = (int)arrlist2.get(i);
+if(arrlist1.indexOf(key) == -1)
+{
+if(!temp.contains(key))
+{
+++count;
+temp.add(key);
+}
+}
+}
+int[] result = new int[count];
+for(int i=0;i<count;i++)
+result[i] = (int)temp.get(i);
+return result;
+}
+}
+60.Price Calculator - II
+Write a small price calculator application with the below mentioned flow:
+1. Read a value n indicating the total count of devices. This would be followed by the name
+and price of the device. The datatype for name would be String and price would be float.
+2. Build a hashmap containing the peripheral devices with name as key and price as value.
+3. Read a value m indicating the number of devices for which the price has to be calculated.
+This would be followed by device names.
+4. For each devices mentioned in the array calcuate the total price.
+5. You decide to write a function costEstimator which takes the above hashmap and array as
+input and returns the total price (float) as output with two decimal points. Include this
+function in class UserMainCode.
+Create a Class Main which would be used to read details in step 1 and build the hashmap.
+Call the static method present in UserMainCode.
+Input and Output Format:
+Input consists of device details. The first number indicates the size of the devices. The next
+two values indicate the name,price.
+This would be followed by m indicating the size of the device array. The next m values would
+be the device names.
+Output consists of the total price in float.
+Refer sample output for formatting specifications.
+Sample Input 1:
+3
+Monitor
+1200.36
+Mouse
+100.42
+Speakers
+500.25
+2
+Speakers
+Mouse
+Sample Output 1:
+600.67
+MAIN:
+import java.util.HashMap;
+import java.util.Scanner;
+public class Main {
+ public static void main(String[] args) {
+ Scanner S=new Scanner(System.in);
+ int n=S.nextInt();
+
+HashMap<String, Float> m1=new HashMap<String, Float>();
+ for(int i=0;i<n;i++)
+ {
+ String name=S.next();
+ float price=S.nextFloat();
+ m1.put(name,price);
+ }
+int m=S.nextInt();
+ String s[]=new String[m];
+ for(int j=0;j<m;j++)
+ {
+ s[j]=S.next();
+ }
+System.out.println(UserMainCode.getTheTotalCostOfPheripherals
+(m1,s));
+ }
+}
+USERMAINCODE:
+import java.util.HashMap;
+import java.util.Iterator;
+public class UserMainCode {
+ public static float getTheTotalCostOfPheripherals(HashMap<String,Float> m1,
+String[] s) {
+ Float f=(float) 0;
+ Iterator<String> i=m1.keySet().iterator();
+ while(i.hasNext()){
+ String s1=i.next();
+ Float f1=m1.get(s1);
+ for(int j=0;j<s.length;j++)
+ if(s[j].equals(s1))
+ f+=f1; }
+ return f;
+ }
+}
+61.String Processing - ZigZag
+Write a program to read a string containing date in DD-MM-YYYY format. find the number of
+days in the given month.
+Note - In leap year February has got 29 days.
+Include a class UserMainCode with a static method getLastDayOfMonth which accepts
+the
+string. The return type is the integer having number of days.
+Create a Class Main which would be used to accept the string and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+12-06-2012
+Sample Output 1:
+30
+Sample Input 2:
+10-02-2012
+Sample Output 2:
+29
+MAIN:
+import java.io.BufferedReader;
+ import java.io.IOException;
+ import java.io.InputStreamReader;
+ import java.text.ParseException;
+ import java.text.SimpleDateFormat;
+ import java.util.*;
+ public class Main {
+ public static void main(String[] args) throws IOException,
+ParseException {
+ Scanner S=new Scanner(System.in);
+ String s1=S.next();
+ UserMainCode.getLastDayOfMonth(s1);
+ }
+ }
+USERMAINCODE:
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+public class UserMainCode {
+ public static void getLastDayOfMonth(String s1) throws ParseException{
+ SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+ Calendar cal=Calendar.getInstance();
+ Date d1=sdf.parse(s1);
+ cal.setTime(d1);
+ int n=cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+ System.out.println(n);
+}
+}
+
+62.Leap Year
+Write a program to read a string containing date in DD/MM/YYYY format and check if its a
+leap year. If so, return true else return false.
+Include a class UserMainCode with a static method isLeapYear which accepts the string.
+The
+return type is the boolean indicating TRUE / FALSE.
+Create a Class Main which would be used to accept the string and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of TRUE / FALSE.
+Refer sample output for formatting specifications.
+Sample Input 1:
+23/02/2012
+Sample Output 1:
+TRUE
+Sample Input 2:
+12/12/2011
+Sample Output 2:
+FALSE
+MAIN:
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+public class Main {
+public static void main(String[] args) throws IOException, ParseException {
+ Scanner S=new Scanner(System.in);
+ String s1=S.next();
+ UserMainCode.isLeapyear(s1);
+}
+}
+USERMAINCODE:
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
+public class UserMainCode {
+ public static void isLeapyear(String s1) throws ParseException{
+ SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+ GregorianCalendar g=new GregorianCalendar();
+ StringTokenizer t=new StringTokenizer(s1,"/");
+ String s2=t.nextToken();
+ String s3=t.nextToken();
+ String s4=t.nextToken();
+ int n1=Integer.parseInt(s4);
+ Date d1=sdf.parse(s1);
+ boolean b=g.isLeapYear(n1);
+ System.out.println(b);
+}
+}
+63) Largest Chunk
+Write a program to read a string and return the length of the largest "chunk" in the string.
+A chunk is a repetition of same character 2 or more number of times. If the given string
+doest not contain any repeated chunk of characters return -1.
+Include a class UserMainCode with a static method getLargestSpan which accepts the
+string.
+The return type is the integer.
+Create a Class Main which would be used to accept the string and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+This place is soooo good
+Sample Output 1:
+4
+MAIN:
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) {
+ Scanner S=new Scanner(System.in);
+ String s1=S.nextLine();
+ System.out.println(UserMainCode.getLargestSpan(s1));
+}
+}
+USERMAINCODE:
+import java.util.StringTokenizer;
+public class UserMainCode {
+ public static int getLargestSpan(String s1) {
+ int max=0;
+ StringTokenizer t=new StringTokenizer(s1," ");
+ while(t.hasMoreTokens()){
+ String s2=t.nextToken();
+ int n=0;
+ for(int i=0;i<s2.length()-1;i++)
+ if(s2.charAt(i)==s2.charAt(i+1))
+ n++;
+ if(n>max)
+ max=n;
+ }
+ return (max+1);
+ } }
+64) Largest Span
+Write a program to read a integer array, find the largest span in the array.
+Span is the count of all the elements between two repeating elements including the
+repeated elements.
+Include a class UserMainCode with a static method getLargestSpan which accepts the
+integer array. The return type is integer.
+Create a Class Main which would be used to accept the integer array and call the static
+method present in UserMainCode.
+Input and Output Format:
+Input consists of an integer n which is the number of elements followed by n integer values.
+Output consists of integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+6
+4
+2
+1
+4
+5
+7
+Sample Output 1:
+4
+MAIN:
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+int []a=new int[n];
+for(int i=0;i<n;i++)
+{
+a[i]=sc.nextInt();
+}
+System.out.print(UserMainCode.getLargestSpan(a,n));
+}}
+USERMAINCODE:
+public class UserMainCode {
+public static int getLargestSpan(int[] x,int n)
+{
+int gap=0,max=0;
+for(int i=0;i<n;i++)
+{
+for(int j=i+1;j<n;j++)
+{
+if(x[i]==x[j])
+{
+gap=j;
+}
+}
+if(gap-i>max)
+max=gap-i;
+}
+return max+1;
+}
+}
+65 )Even Sum & Duplicate Elements
+Write a program to read a integer array, Remove the duplicate elements and display sum of
+even numbers in the output. If input array contain only odd number then return -1.
+Include a class UserMainCode with a static method sumElements which accepts the
+integer
+array. The return type is integer.
+Create a Class Main which would be used to accept the integer array and call the static
+method present in UserMainCode.
+Input and Output Format:
+Input consists of an integer n which is the number of elements followed by n integer values.
+Output consists of integer.
+Refer sample output for formatting specifications.
+Sample Input 1:
+7
+2
+3
+54
+1
+6
+7
+7
+Sample Output 1:
+62
+Sample Input 2:
+6
+3
+7
+9
+13
+17
+21
+Sample Output 2:
+-1
+MAIN:
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+public class Main
+{
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+int a[]=new int[n];
+for(int i=0;i<n;i++)
+{
+a[i]=sc.nextInt();
+}
+System.out.println(UserMainCode.sumElements(a));
+}}
+USERMAINCODE:
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+public class UserMainCode {
+public static int sumElements(int a[])
+{
+LinkedHashSet<Integer>h1=new LinkedHashSet<Integer>();
+int s=0;
+for(int i=0;i<a.length;i++)
+{
+h1.add(a[i]);
+}
+Iterator<Integer> it=h1.iterator();
+while(it.hasNext())
+{
+int k=it.next();
+if(k%2==0)
+{
+s=s+k;
+}
+}
+if(s>0)
+return s;
+else
+return -1;
+}
+}
+66. Regular Expression - III
+Given a string (s) apply the following rules.
+I)At least 8 characters must be present
+II)At least one capital letter must be present
+III)At least one small letter must be present
+Iv)At least one special symbol must be present
+V)At least one numeric value must be present
+If the condition is satisifed then print valid else print invalid.
+Include a class UserMainCode with a static method passwordValidation which accepts the
+string. The return type is the string.
+Create a Class Main which would be used to accept the string and call the static method
+present in UserMainCode.
+Input and Output Format:
+Input consists of a string.
+Output consists of string (valid / invalid) .
+Refer sample output for formatting specifications.
+Sample Input 1:
+Technology$1213
+Sample Output 1:
+valid
+Main:
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+{
+Scanner s=new Scanner(System.in);
+String a=s.next();
+System.out.println(UserMainCode.passwordValidation(a));
+s.close();
+}
+}
+UserMainCode:
+public class UserMainCode
+{
+public static String passwordValidation(String a)
+{
+String k;
+if(a.matches(".*[0-
+9]{1,}.*")&&a.matches(".*[@#$]{1,}.*")&&a.length()>=8&&a.matches(".*[AZ]{1,}.*")&&a.matches(".*[a-z].*"))
+{
+k="validinput";
+}
+else
+{
+k="Invalidinput";
+}
+return k;
+}
+}
+67. Integer Factorial
+Give an array of integer as input, store the numbers and their factorials in an hashmap and
+print the same.
+Include a class UserMainCode with a static method getFactorial which accepts the integer
+array. The return type is the hashmap which is printed key:value.
+Create a Class Main which would be used to accept the integer array and call the static
+method present in UserMainCode.
+Input and Output Format:
+Input consists of a number denoting the size of the array and followed by the elements.
+Output consists of a hashmap printed in the output format .
+Refer sample output for formatting specifications.
+Sample Input1:
+4
+2
+3
+5
+4
+Sample Output1:
+2:2
+3:6
+5:120
+4:24
+Main:
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+public class Main
+{
+public static void main(String[] args)
+{
+Scanner s=new Scanner(System.in);
+int a=Integer.parseInt(s.nextLine());;
+int[]k=new int[a];
+for(int i=0;i<a;i++)
+{
+k[i]=s.nextInt();
+}
+LinkedHashMap<Integer,Integer>hm=new LinkedHashMap<Integer,Integer>();
+hm=UserMainCode.getFactorial(k);
+Iterator<Integer> it=hm.keySet().iterator();
+for(int i=0;i<a;i++)
+{
+int n=it.next();
+int fac=hm.get(n);
+System.out.println(n+":"+fac);
+s.close();
+}
+}
+}
+UserMainCode;
+import java.util.LinkedHashMap;
+public class UserMainCode
+{
+public static LinkedHashMap<Integer,Integer> getFactorial(int[] k)
+{
+LinkedHashMap<Integer,Integer> hm1=new LinkedHashMap<Integer,Integer>();
+for(int i=0;i<k.length;i++)
+{
+int u=1;
+for(int j=1;j<=k[i];j++)
+{
+u=u*j;
+}
+hm1.put(k[i],u);
+}
+return hm1;
+}
+}
+68. String processing – Long + Short + Long
+Obtain two strings S1,S2 from user as input. Your program should form a string
+of “long+short+long”, with the shorter string inside of the longer String.
+Include a class UserMainCode with a static method getCombo which accepts two string
+variables. The return type is the string.
+Create a Class Main which would be used to accept two Input strings and call the static
+method present in UserMainCode.
+Input and Output Format:
+Input consists of two strings with maximum size of 100 characters.
+Output consists of an string.
+Refer sample output for formatting specifications.
+Sample Input 1:
+Hello
+Hi
+Sample Output 1:
+HelloHiHello
+Main;
+import java.util.Scanner;
+public class Main
+{
+public static void main(String[] args)
+{
+Scanner s=new Scanner(System.in);
+String s1=s.next();
+String s2=s.next();
+System.out.println(UserMainCode.getCombo(s1,s2));
+s.close();
+}
+}
+UserMainCode;
+public class UserMainCode
+{
+public static String getCombo(String s1,String s2)
+{
+StringBuffer sb=new StringBuffer();
+int p=s1.length();
+int q=s2.length();
+if(p>q)
+{
+sb.append(s1).append(s2).append(s1);
+}
+else
+{
+sb.append(s2).append(s1).append(s2);
+}
+return sb.toString();
+}
+}
+69. Age for Voting
+Given a date of birth (dd/MM/yyyy) of a person in string, compute his age as of 01/01/2015.
+If his age is greater than 18, then println eligible else println not-eligible.
+Include a class UserMainCode with a static method getAge which accepts the string value.
+The return type is the string.
+Create a Class Main which would be used to accept the two string values and call the static
+method present in UserMainCode.
+Input and Output Format:
+Input consists of two string.
+Output consists of a string.
+Refer sample output for formatting specifications.
+Sample Input 1:
+16/11/1991
+Sample Output 1:
+eligible
+Main:
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+{
+Scanner s=new Scanner(System.in);
+String a=s.nextLine();
+System.out.println(UserMainCode.getAge(a));
+s.close();
+}
+}
+UserMainCode:
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+public class UserMainCode
+{
+public static String getAge(String n)
+{
+Scanner s=new Scanner(System.in);
+int year=0;
+String s1=s.next();
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+try
+{
+Date d=sdf.parse(n);
+Date d1=sdf.parse(s1);
+int y=d.getYear();
+int y1=d1.getYear();
+int m=d.getMonth();
+int m1=d1.getMonth();
+int day=d.getDate();
+int day1=d1.getDate();
+year=y1-y;
+if(m>m1)
+year--;
+else if(m==m1)
+{if(day<day1)
+year--;
+}
+}
+catch(Exception e)
+{
+e.printStackTrace();
+}
+if(year>18)
+return "eligible";
+else
+return "not-eligible";
+}
+}
